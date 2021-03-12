@@ -9,9 +9,13 @@ const ShoppingCart = () => {
   const loaded = useSelector((state) => state.session.loaded);
   const checkout = useSelector((state) => state.checkout.products);
   const getItems = Object.values(sessionStorage);
-  console.log("getItem", getItems);
+  console.log("getItem", sessionStorage);
+  const tester = () => {
+    console.log("hello wrold");
+  };
   useEffect(() => {
     dispatch(buyProducts(getItems));
+    tester();
   }, [dispatch]);
   console.log(".................", checkout);
 

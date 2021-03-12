@@ -78,7 +78,7 @@ const IndividualProduct = () => {
     console.log();
     return <AliceCarousel mouseTracking items={arr} />;
   };
-
+  let test = quantity - count;
   const submitReview = (e) => {
     // e.preventDefault();
     console.log("sent dispatch");
@@ -89,9 +89,10 @@ const IndividualProduct = () => {
 
   const addProduct = (e) => {
     // e.preventDefault();
-    const val = { userId: user.id, productId: productId, quantity: count };
+    const val = { productInfo: productInfo, quantity: test };
     console.log("adding to sessionStore");
     sessionStorage.setItem(`productId ${productId}`, JSON.stringify(val));
+
     console.log(
       "whats in the session store right now",
       Object.values(sessionStorage)
@@ -113,8 +114,6 @@ const IndividualProduct = () => {
     setCount(count + 1);
   };
 
-  let test = quantity - count;
-
   console.log("the amount you are actually buying ", test);
 
   return loaded && user ? (
@@ -125,11 +124,9 @@ const IndividualProduct = () => {
             <div>{productInfo.name}</div>
             <div className="image-grid">{photoArrMapper(photosArr)}</div>
             <div>
-              <button onClick={quantityToCart}>add</button>
-              <div>{count}</div>
-              <button onClick={quantityOutCart}>
-                put back I cants afford it
-              </button>
+              <button onClick={quantityToCart}>get me some baby</button>
+              <div>{count} available</div>
+              <button onClick={quantityOutCart}>put it back im broke</button>
             </div>
             <div>{productInfo.description}</div>
             <div className="reviews-grid">{reviewsArrMapper(reviewsArr)}</div>
