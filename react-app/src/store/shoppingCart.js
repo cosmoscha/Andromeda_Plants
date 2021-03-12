@@ -14,27 +14,27 @@ const checked_out = (products) => {
   };
 };
 
-// export const buyProducts = (getItems) => async (dispatch) => {
-//   console.log("this is what you send to the server", getItems);
-//   let boughtProducts = await fetch(`/api/products/checkout`, {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({
-//       getItems: getItems,
-//     }),
-//   });
-//   boughtProducts = await boughtProducts.json();
-//   console.log("bought products", boughtProducts);
-//   dispatch(checkout(boughtProducts));
-//   return boughtProducts;
-// };
-
 export const buyProducts = (getItems) => async (dispatch) => {
-  dispatch(checkout(getItems));
-  return getItems;
+  console.log("this is what you send to the server", getItems);
+  let boughtProducts = await fetch(`/api/products/checkout`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      getItems: getItems,
+    }),
+  });
+  boughtProducts = await boughtProducts.json();
+  console.log("bought products", boughtProducts);
+  dispatch(checkout(boughtProducts));
+  return boughtProducts;
 };
+
+// export const buyProducts = (getItems) => async (dispatch) => {
+//   dispatch(checkout(getItems));
+//   return getItems;
+// };
 export const checkedout = (getItems) => async (dispatch) => {
   let checkoutItems = await fetch(`api/products/checkedout`, {
     method: "POST",

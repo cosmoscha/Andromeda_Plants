@@ -22,7 +22,7 @@ const IndividualProduct = () => {
   const productId = parseInt(product.id);
   const [review, setReview] = useState("");
   const [rating, setRating] = useState(1);
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
 
   useEffect(() => {
     dispatch(getReviewsRatings(productId));
@@ -79,17 +79,28 @@ const IndividualProduct = () => {
     return <AliceCarousel mouseTracking items={arr} />;
   };
   let test = quantity - count;
+  let subTotal = productInfo.price * test;
   const submitReview = (e) => {
     // e.preventDefault();
     console.log("sent dispatch");
-    const formValues = { id: productId, review: review, rating: rating };
+    const formValues = {
+      id: productId,
+      review: review,
+      rating: rating,
+    };
     console.log(formValues);
     dispatch(makeReview(formValues));
   };
 
   const addProduct = (e) => {
     // e.preventDefault();
-    const val = { productInfo: productInfo, quantity: test };
+    const val = {
+      productId: productInfo.id,
+      name: productInfo.name,
+      quantity: test,
+      price: productInfo.price,
+      photo: photos[0].photoKey,
+    };
     console.log("adding to sessionStore");
     sessionStorage.setItem(`productId ${productId}`, JSON.stringify(val));
 
@@ -97,6 +108,7 @@ const IndividualProduct = () => {
       "whats in the session store right now",
       Object.values(sessionStorage)
     );
+
     history.push("/shoppingCart");
   };
 
@@ -123,15 +135,17 @@ const IndividualProduct = () => {
           <div className="imageContainer">
             <div>{productInfo.name}</div>
             <div className="image-grid">{photoArrMapper(photosArr)}</div>
+            <div>price: ${productInfo.price}</div>
             <div>
               <button onClick={quantityToCart}>get me some baby</button>
               <div>{count} available</div>
               <button onClick={quantityOutCart}>put it back im broke</button>
             </div>
-            <div>{productInfo.description}</div>
+            <div>description: {productInfo.description}</div>
             <div className="reviews-grid">{reviewsArrMapper(reviewsArr)}</div>
             <div>
               <button onClick={addProduct}>add {test} to cart</button>
+              subtotal: ${subTotal}
             </div>
             <form onSubmit={submitReview}>
               <input

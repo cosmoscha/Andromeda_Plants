@@ -7,6 +7,7 @@ class Product(db.Model):
     name = db.Column(db.String)
     description = db.Column(db.Text, nullable=True)
     quantity = db.Column(db.Integer)
+    price = db.Column(db.Float)
     createdAt = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     updatedAt = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     users = db.relationship("UserProduct", back_populates="product")
@@ -21,5 +22,6 @@ class Product(db.Model):
             "name":self.name,
             "description": self.description,
             "quantity": self.quantity,
+            "price" : self.price,
             "photos": [photo.to_dict() for photo in self.photos]
         }

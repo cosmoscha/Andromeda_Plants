@@ -7,43 +7,40 @@ const ShoppingCart = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const loaded = useSelector((state) => state.session.loaded);
-  const checkout = useSelector((state) => state.checkout.products);
+  const checkout = useSelector((state) => state.checkout);
   const getItems = Object.values(sessionStorage);
   console.log("getItem", sessionStorage);
-  const tester = () => {
-    console.log("hello wrold");
-  };
   useEffect(() => {
     dispatch(buyProducts(getItems));
-    tester();
   }, [dispatch]);
+
   console.log(".................", checkout);
 
-  const checkoutMapper = (arr) => {
-    if (checkout) {
-      if (checkout.length) {
-        arr = arr.map((product) => {
-          console.log("2e2dsdwd", product.name);
-          const imgSrc = product.photos[0].photoKey;
-          return (
-            <>
-              <div key={product.id} className="product-container">
-                <img src={imgSrc} className="productImages2" />
-                <div>{product.name}</div>
-                <div>quantity: {product.quantity}</div>
-              </div>
-            </>
-          );
-        });
-      }
-    }
-    return arr;
-  };
-  console.log("qqqqqqqqqqqqqqqqqq", checkoutMapper(checkout));
+  // const checkoutMapper = (arr) => {
+  //   if (checkout) {
+  //     if (checkout.length) {
+  //       arr = arr.map((product) => {
+  //         console.log("2e2dsdwd", product.name);
+  //         const imgSrc = product.photos[0].photoKey;
+  //         return (
+  //           <>
+  //             <div key={product.id} className="product-container">
+  //               <img src={imgSrc} className="productImages2" />
+  //               <div>{product.name}</div>
+  //               <div>quantity: {product.quantity}</div>
+  //             </div>
+  //           </>
+  //         );
+  //       });
+  //     }
+  //   }
+  //   return arr;
+  // };
+  // console.log("qqqqqqqqqqqqqqqqqq", checkoutMapper(checkout));
   return loaded && user ? (
     <>
       <div className="pages-container">
-        <div>{checkoutMapper(checkout)}</div>
+        {/* <div>{checkoutMapper(checkout)}</div> */}
         <div> hullo world</div>
       </div>
     </>
