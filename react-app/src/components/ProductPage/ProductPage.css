@@ -1,0 +1,32 @@
+.image-grid {
+  height: 80%;
+  width: 79%;
+  display: grid;
+  grid-template-columns: 500px 500px 500px;
+}
+
+.productImages2 {
+  width: 300px;
+  height: 300px;
+  border-radius: 40%;
+}
+.image-grid-container {
+  padding-top: 30vh;
+  background-color: burlywood;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  min-width: 100%;
+}
+
+.product-container {
+  padding: 20px 20px;
+  border: solid;
+  border-color: chocolate;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20%;
+}

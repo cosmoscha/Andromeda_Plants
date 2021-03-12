@@ -1,0 +1,38 @@
+/* TODO Add site wide styles */
+
+/* .rounded-img-container {
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  margin: 10px;
+}
+
+.rounded-img-container img {
+  object-fit: cover;
+  border-radius: 50%;
+} */
+.test {
+  border-radius: 50%;
+  height: 20vh;
+  width: 10vw;
+}
+@media (max-width: 768px) {
+  .test {
+    height: 50px;
+    width: 50px;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+* {
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+.users-container {
+  padding-top: 30vh;
+}

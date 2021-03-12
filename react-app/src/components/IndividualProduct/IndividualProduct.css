@@ -1,0 +1,28 @@
+.productImages {
+  width: 500px;
+  height: 500px;
+  border-radius: 40%;
+}
+
+.imageContainer {
+  padding-left: 10vw;
+  padding-top: 30vh;
+  background-color: burlywood;
+  display: grid;
+  grid-template-areas: ;
+}
+.image-grid {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 500px 500px;
+  /* grid-template-rows: 50% 50%; */
+}
+
+.reviews-grid {
+  background-color: red;
+  display: grid;
+  grid-template-columns: 105px 105px;
+  grid-template-rows: 50% 50%;
+}
+/* @import "react-alice-carousel/lib/alice-carousel.css"; */
