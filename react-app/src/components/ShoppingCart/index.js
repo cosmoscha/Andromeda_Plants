@@ -8,44 +8,40 @@ const ShoppingCart = () => {
   const user = useSelector((state) => state.session.user);
   const loaded = useSelector((state) => state.session.loaded);
   const checkout = useSelector((state) => state.checkout.products);
-  const getItems = Object.values(sessionStorage);
+  let getItems = Object.values(sessionStorage);
   console.log("getItem", getItems);
   useEffect(() => {
     dispatch(buyProducts(getItems));
   }, [dispatch]);
 
-  let test = JSON.parse(getItems);
-
-  console.log(".................", test);
-
-  const checkoutMapper = (arr) => {
-    if (checkout) {
-      if (checkout.length) {
-        arr = arr.map((product) => {
-          console.log("2e2dsdwd", product.name);
-          const imgSrc = product.photos[0].photoKey;
-          return (
-            <>
-              <div key={product.id} className="product-container">
-                <img src={imgSrc} className="productImages2" />
-                <div>{product.name}</div>
-                <div>quantity: {product.quantity}</div>
-              </div>
-            </>
-          );
-        });
-      }
+  let newArr;
+  if (checkout) {
+    if (checkout.length) {
+      newArr = checkout.map((product, i) => {
+        return [product, getItems[i]];
+      });
     }
-    return arr;
-  };
-  console.log("qqqqqqqqqqqqqqqqqq", checkoutMapper(checkout));
+  }
+
+  console.log("1111111111111111111111", newArr);
+
+  // const checkoutMapper = (arr) => {
+  //   arr = arr.map((product) => {
+  //     console.log("product", product);
+  //   });
+  //   return arr;
+  // };
+  // console.log("qqqqqqqqqqqqqqqqqq", checkoutMapper(newArr));
   return loaded && user ? (
     <>
       <div className="pages-container">
-        <div>{checkoutMapper(checkout)}</div>
+        <div>
+          {/* <div>{checkoutMapper(checkout)}</div> */}
+          <div></div>
+        </div>
         <div> hullo world</div>
         <div>
-          \<button>checkout</button>
+          <button>checkout</button>
         </div>
       </div>
     </>
