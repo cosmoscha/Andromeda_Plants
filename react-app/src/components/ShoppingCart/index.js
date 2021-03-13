@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, Redirect, useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { buyProducts } from "../../store/shoppingCart";
 import "./cart.css";
 const ShoppingCart = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const user = useSelector((state) => state.session.user);
   const loaded = useSelector((state) => state.session.loaded);
   const checkout = useSelector((state) => state.checkout.products);
-  const history = useHistory();
   let getItems = Object.values(sessionStorage);
 
   useEffect(() => {
@@ -41,6 +42,7 @@ const ShoppingCart = () => {
     }
     return newArr;
   };
+
   const goToCheckout = () => {
     history.push("/checkout");
   };

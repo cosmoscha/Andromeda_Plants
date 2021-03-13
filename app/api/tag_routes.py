@@ -12,5 +12,4 @@ def allTags():
 @tag_routes.route('/<int:id>')
 def oneTag(id):
     tag =Tag.query.filter_by(id=id).first()
-    print("TAG ddddddddddddddddddddddOBJECT",tag.to_dict())
     return tag.to_dict()

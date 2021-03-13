@@ -92,6 +92,10 @@ const IndividualProduct = () => {
   };
 
   const addProduct = (e) => {
+    if (test === 0) {
+      console.log("add something you idiot");
+      return;
+    }
     // e.preventDefault();
     const val = {
       productId: productInfo.id,
@@ -99,8 +103,6 @@ const IndividualProduct = () => {
     };
 
     sessionStorage.setItem(`productId ${productId}`, JSON.stringify(val));
-
-    history.push("/shoppingCart");
   };
 
   const ratings = [1, 2, 3, 4, 5];
