@@ -96,10 +96,7 @@ const IndividualProduct = () => {
     // e.preventDefault();
     const val = {
       productId: productInfo.id,
-      name: productInfo.name,
       quantity: test,
-      price: productInfo.price,
-      photo: photos[0].photoKey,
     };
     console.log("adding to sessionStore");
     sessionStorage.setItem(`productId ${productId}`, JSON.stringify(val));

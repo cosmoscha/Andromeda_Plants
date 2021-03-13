@@ -53,9 +53,10 @@ def checkout():
     print("the response obssssssssssssssssssssssssssssject", request.json)
     req = request.json['getItems']
     # print("getItems obj", json.loads(req[0]))
-    print("req.................",type(req))
-    lst = [json.loads(i)['productId'] for i in req]
-    print("qwhekjqwhekjqwhekjqw",lst)
-    products = Product.query.filter(Product.id.in_(lst)).all()
-    print("all products", {"products": [product.to_dict() for product in products]})
-    return {"products": [product.to_dict() for product in products]}
+    print("req.................",req)
+    prodId = [json.loads(i)['productId'] for i in req]
+    quantities = [json.loads(i)['quantity'] for i in req]
+    print("qwhekjqwhekjqwhekjqw",prodId)
+    print("22222222222222222",quantities)
+    products = Product.query.filter(Product.id.in_(prodId)).all()
+    return {"products": [product.to_dict() for product in products], "quantity" : [i for i in quantities]}
