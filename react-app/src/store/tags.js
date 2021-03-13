@@ -10,7 +10,6 @@ const setProductTag = (tag) => {
 export const getProductTag = (id) => async (dispatch) => {
   let tag = await fetch(`/api/tags/${id}`);
   tag = await tag.json();
-  console.log("hitting the tags dispatch", tag);
   dispatch(setProductTag(tag));
   return tag;
 };

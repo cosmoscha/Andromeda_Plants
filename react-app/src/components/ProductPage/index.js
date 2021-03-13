@@ -10,7 +10,7 @@ const ProductPage = () => {
   const products = useSelector((state) => state.tags.products);
   const user = useSelector((state) => state.session.user);
   const loaded = useSelector((state) => state.session.loaded);
-  console.log("qweqweqweqwe", products);
+
   const tagId = parseInt(useParams().id);
 
   useEffect(() => {
@@ -37,8 +37,6 @@ const ProductPage = () => {
     }
     return arr;
   };
-
-  console.log("ssssssssssssswwwwsssss", productMapper(products));
 
   return loaded && user ? (
     <>

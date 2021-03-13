@@ -15,7 +15,6 @@ const checked_out = (products) => {
 };
 
 export const buyProducts = (getItems) => async (dispatch) => {
-  console.log("this is what you send to the server", getItems);
   let boughtProducts = await fetch(`/api/products/checkout`, {
     method: "POST",
     headers: {
@@ -26,7 +25,7 @@ export const buyProducts = (getItems) => async (dispatch) => {
     }),
   });
   boughtProducts = await boughtProducts.json();
-  console.log("bought products", boughtProducts);
+
   dispatch(checkout(boughtProducts));
   return boughtProducts;
 };

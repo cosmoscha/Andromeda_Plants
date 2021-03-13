@@ -10,14 +10,10 @@ const ShoppingCart = () => {
   const checkout = useSelector((state) => state.checkout.products);
   const history = useHistory();
   let getItems = Object.values(sessionStorage);
-  console.log("getItem", getItems);
+
   useEffect(() => {
     dispatch(buyProducts(getItems));
   }, [dispatch]);
-
-  const goToCheckout = (e) => {
-    history.push("/checkout");
-  };
 
   const checkoutMapper = (arr1, arr2) => {
     let newArr;
@@ -29,7 +25,7 @@ const ShoppingCart = () => {
         newArr = newArr.map((i) => {
           const quant = JSON.parse(i[1]).quantity;
           const photo = i[0].photos;
-          console.log("photo", photo);
+
           return (
             <>
               <div key={i.id}>
@@ -45,17 +41,17 @@ const ShoppingCart = () => {
     }
     return newArr;
   };
+  const goToCheckout = () => {
+    history.push("/checkout");
+  };
 
   return loaded && user ? (
     <>
       <div className="pages-container">
-        <div>
-          <div>{checkoutMapper(checkout, getItems)}</div>
-          <div></div>
-        </div>
+        <div>{checkoutMapper(checkout, getItems)}</div>
         <div> hullo world</div>
         <div>
-          <button onclick={goToCheckout}>checkout</button>
+          <button onClick={goToCheckout}> checkout</button>
         </div>
       </div>
     </>

@@ -34,7 +34,6 @@ const IndividualProduct = () => {
       setCount(quantity);
     }
   }, [setCount, quantity]);
-  console.log("counttttttttttttttt", count);
 
   const reviewsArr = [];
   const photosArr = [];
@@ -75,20 +74,20 @@ const IndividualProduct = () => {
         </>
       );
     });
-    console.log();
+
     return <AliceCarousel mouseTracking items={arr} />;
   };
   let test = quantity - count;
   let subTotal = productInfo.price * test;
   const submitReview = (e) => {
     // e.preventDefault();
-    console.log("sent dispatch");
+
     const formValues = {
       id: productId,
       review: review,
       rating: rating,
     };
-    console.log(formValues);
+
     dispatch(makeReview(formValues));
   };
 
@@ -98,13 +97,8 @@ const IndividualProduct = () => {
       productId: productInfo.id,
       quantity: test,
     };
-    console.log("adding to sessionStore");
-    sessionStorage.setItem(`productId ${productId}`, JSON.stringify(val));
 
-    console.log(
-      "whats in the session store right now",
-      Object.values(sessionStorage)
-    );
+    sessionStorage.setItem(`productId ${productId}`, JSON.stringify(val));
 
     history.push("/shoppingCart");
   };
@@ -122,8 +116,6 @@ const IndividualProduct = () => {
     }
     setCount(count + 1);
   };
-
-  console.log("the amount you are actually buying ", test);
 
   return loaded && user ? (
     <>

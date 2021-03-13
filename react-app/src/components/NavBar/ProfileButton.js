@@ -10,7 +10,6 @@ import { authenticate } from "../../services/auth";
 const ProfileButton = ({ authenticated, setAuthenticated }) => {
   const [showMenu, setShowMenu] = useState(false);
   // const user = useSelector((state) => state.session.user);
-  console.log("user", authenticated);
 
   const profileButtons = (
     <>
