@@ -51,6 +51,10 @@ def makeReview(id):
 @product_routes.route('/checkout', methods=['POST'])
 def checkout():
     print("the response obssssssssssssssssssssssssssssject", request.json)
+    def custom_dict(self, q):
+        return {
+
+        }
     req = request.json['getItems']
     # print("getItems obj", json.loads(req[0]))
     print("req.................",req)
@@ -59,4 +63,4 @@ def checkout():
     print("qwhekjqwhekjqwhekjqw",prodId)
     print("22222222222222222",quantities)
     products = Product.query.filter(Product.id.in_(prodId)).all()
-    return {"products": [product.to_dict() for product in products], "quantity" : [i for i in quantities]}
+    return {"products": [product.to_dict() for product in products]}

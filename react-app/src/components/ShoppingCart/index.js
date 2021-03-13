@@ -14,7 +14,9 @@ const ShoppingCart = () => {
     dispatch(buyProducts(getItems));
   }, [dispatch]);
 
-  console.log(".................", checkout);
+  let test = JSON.parse(getItems);
+
+  console.log(".................", test);
 
   const checkoutMapper = (arr) => {
     if (checkout) {
