@@ -34,6 +34,8 @@ def makeReview(id):
     form['csrf_token'].data = request.cookies['csrf_token']
     print("successful post")
     print("the return boy", form.data)
+    print("the return boy", form.data['reviews'])
+    print("the return boy", form.data['ratings'])
     if form.validate_on_submit():
         reviewData = form.data['reviews']
         ratingData = form.data['ratings']
