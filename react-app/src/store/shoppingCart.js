@@ -32,22 +32,15 @@ export const buyProducts = (getItems) => async (dispatch) => {
 
 export const completeOrder = (address) => async (dispatch) => {
   const formData = new FormData();
-  FormData.append(
-    (street_address: address.streetAddress)((city: address.city))(
-      (zip_code: address.zipCode)
-    )
-  );
+  formData.append("street_address", address.streetAddress);
+  formData.append("city", address.city);
+  formData.append("zip_code", address.zipCode);
+  console.log("new form data", formData);
+
   console.log("whatyou send to server", address);
   let addressInfo = await fetch(`api/userProducts/finish`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      street_address: address.streetAddress,
-      city: address.city,
-      zip_code: address.zipCode,
-    }),
+    body: formData,
   });
   console.log("addressInfo", addressInfo);
   addressInfo = await addressInfo.json();

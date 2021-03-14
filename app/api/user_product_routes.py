@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from app.forms import AddressForm
 from app.models import UserProduct, db
 from flask_login import current_user
@@ -13,8 +13,10 @@ def getAll(id):
 @userProduct_routes.route('/finish', methods=["POST"])
 def getAddressForm():
     form = AddressForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
     print("form.data", form.data)
+    form['csrf_token'].data = request.cookies['csrf_token']
+    print(",,,,,,,,,,,,,,,,,,,,,,,,,,,", form['csrf_token'].data)
+
     if form.validate_on_submit():
         streetData = form.data['street_address']
         cityData = form.data['city']
