@@ -30,21 +30,23 @@ export const buyProducts = (getItems) => async (dispatch) => {
   return boughtProducts;
 };
 
-export const completeOrder = (street, city, zipcode) => async (dispatch) => {
-  let addressInfo = await fetch(`api/products/finish`, {
+export const completeOrder = (address) => async (dispatch) => {
+  console.log("whatyou send to server", address);
+  let addressInfo = await fetch(`api/userProducts/finish`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      street: street,
-      city: city,
-      zipcode: zipcode,
+      street_address: address.streetAddress,
+      city: address.city,
+      zip_code: address.zipCode,
     }),
   });
+  console.log("addressInfo", addressInfo);
   addressInfo = addressInfo.json();
   console.log("addressInfo", addressInfo);
-  // dispatch(checked_out(addressInfo));
+  dispatch(checked_out(addressInfo));
   return addressInfo;
 };
 const initialState = [];

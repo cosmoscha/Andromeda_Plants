@@ -31,8 +31,8 @@ def getOne(id):
 @product_routes.route('/<int:id>', methods=['POST'])
 def makeReview(id):
     form = ReviewForm()
+    print("successfulqwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww post", form.data)
     form['csrf_token'].data = request.cookies['csrf_token']
-    print("successful post")
     print("the return boy", form.data)
     print("the return boy", form.data['reviews'])
     print("the return boy", form.data['ratings'])

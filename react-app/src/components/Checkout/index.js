@@ -14,8 +14,14 @@ const Checkout = () => {
 
   const completeOrders = (e) => {
     e.preventDefault();
+    const address = {
+      streetAddress: streetAddress,
+      city: city,
+      zipCode: zipCode,
+    };
+    console.log("addddddy", address);
 
-    dispatch(completeOrder(streetAddress, city, zipCode));
+    dispatch(completeOrder(address));
   };
   console.log("the form info sent", streetAddress, city, zipCode);
   return loaded && user ? (
