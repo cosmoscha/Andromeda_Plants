@@ -30,28 +30,22 @@ export const buyProducts = (getItems) => async (dispatch) => {
   return boughtProducts;
 };
 
-// export const completeOrder = (address) => async (dispatch) => {
-//   let addressInfo = await fetch(`api/products/finish`, {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({
-//       address: address,
-//     }),
-//   });
-//   addressInfo = addressInfo.json();
-//   dispatch(checked_out(addressInfo));
-//   return addressInfo;
-// };
-
-export const getForm = () => async (dispatch) => {
-  let form = await fetch(`api/userProducts/finish`);
-  console.log("form from wtfields", form);
-  // form = await form.json();
-  // console.log("form after conversion to JSON", form);
-  // dispatch(checkout(form));
-  return form;
+export const completeOrder = (street, city, zipcode) => async (dispatch) => {
+  let addressInfo = await fetch(`api/products/finish`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      street: street,
+      city: city,
+      zipcode: zipcode,
+    }),
+  });
+  addressInfo = addressInfo.json();
+  console.log("addressInfo", addressInfo);
+  // dispatch(checked_out(addressInfo));
+  return addressInfo;
 };
 const initialState = [];
 

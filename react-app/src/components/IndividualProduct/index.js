@@ -79,24 +79,13 @@ const IndividualProduct = () => {
   };
   let test = quantity - count;
   let subTotal = productInfo.price * test;
-  const submitReview = (e) => {
-    // e.preventDefault();
-
-    const formValues = {
-      id: productId,
-      review: review,
-      rating: rating,
-    };
-
-    dispatch(makeReview(formValues));
-  };
 
   const addProduct = (e) => {
     if (test === 0) {
       console.log("add something you idiot");
       return;
     }
-    // e.preventDefault();
+    e.preventDefault();
     const val = {
       productId: productInfo.id,
       quantity: test,
@@ -118,7 +107,15 @@ const IndividualProduct = () => {
     }
     setCount(count + 1);
   };
+  const submitReview = (e) => {
+    const formValues = {
+      id: productId,
+      review: review,
+      rating: rating,
+    };
 
+    dispatch(makeReview(formValues));
+  };
   return loaded && user ? (
     <>
       {userProducts && productInfo && (

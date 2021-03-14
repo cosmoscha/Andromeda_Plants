@@ -16,4 +16,5 @@ def getAddressForm():
     form['csrf_token'].data = request.cookies['csrf_token']
     print("form.data", form.data)
     if form.validate_on_submit():
+        return "hello"
     return "error: address incomplete"
