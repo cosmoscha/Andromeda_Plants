@@ -31,6 +31,12 @@ export const buyProducts = (getItems) => async (dispatch) => {
 };
 
 export const completeOrder = (address) => async (dispatch) => {
+  const formData = new FormData();
+  FormData.append(
+    (street_address: address.streetAddress)((city: address.city))(
+      (zip_code: address.zipCode)
+    )
+  );
   console.log("whatyou send to server", address);
   let addressInfo = await fetch(`api/userProducts/finish`, {
     method: "POST",
@@ -44,7 +50,7 @@ export const completeOrder = (address) => async (dispatch) => {
     }),
   });
   console.log("addressInfo", addressInfo);
-  addressInfo = addressInfo.json();
+  addressInfo = await addressInfo.json();
   console.log("addressInfo", addressInfo);
   dispatch(checked_out(addressInfo));
   return addressInfo;
