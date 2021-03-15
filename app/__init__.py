@@ -11,7 +11,7 @@ from .api.auth_routes import auth_routes
 from .api.product_routes import product_routes
 from .api.tag_routes import tag_routes
 from .api.user_product_routes import userProduct_routes
-
+from .api.search_routes import search_routes
 from .seeds import seed_commands
 
 from .config import Config
@@ -37,6 +37,7 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(product_routes, url_prefix='/api/products')
 app.register_blueprint(tag_routes, url_prefix='/api/tags')
 app.register_blueprint(userProduct_routes, url_prefix='/api/userProducts')
+app.register_blueprint(search_routes, url_prefix='/api/search')
 db.init_app(app)
 Migrate(app, db)
 

@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import "./NavBar.css";
 import ProfileButton from "./ProfileButton";
 import PlantMenu from "../../components/HomePage/PlantMenu";
+import { useDispatch } from "react-redux";
+import { searchPlants } from "../../store/search";
 
 const NavBar = ({ authenticated, setAuthenticated }) => {
-  // const history = useHistory();
-  // const dispatch = useDispatch();
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const [search, setSearch] = useState("");
 
-  const onSearch = async (e) => {
+  const searchThings = async (e) => {
     e.preventDefault();
-    //dispatch the search query
-    //history.push('/search-results)
+    dispatch(searchPlants(search));
+    history.push("/search-results");
   };
   return (
     <nav>
@@ -26,8 +29,12 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
           <div className="banner"> Andromeda Plants</div>
         </div>
         <div className="search-container">
-          <form onSubmit={onSearch}>
-            <input placeholder="Search" className="searchbar" />
+          <form onSubmit={searchThings}>
+            <input
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search a plant"
+              className="searchbar"
+            />
           </form>
         </div>
         <div className="nav-group">

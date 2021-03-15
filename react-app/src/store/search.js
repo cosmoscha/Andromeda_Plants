@@ -7,7 +7,7 @@ const setResults = (results) => {
   };
 };
 
-export const searchUsers = (searchTerm) => async (dispatch) => {
+export const searchPlants = (searchTerm) => async (dispatch) => {
   const response = await fetch(`/api/search/${searchTerm}`);
   const results = await response.json();
   dispatch(setResults(results));

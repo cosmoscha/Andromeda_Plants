@@ -14,6 +14,7 @@ import { addUser } from "./store/session";
 import ProductPage from "./components/ProductPage";
 import ShoppingCart from "./components/ShoppingCart";
 import Checkout from "./components/Checkout";
+import SearchResult from "./components/SearchResults";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -82,6 +83,9 @@ function App() {
         </Route>
         <Route path="/checkout" exact={true}>
           <Checkout />
+        </Route>
+        <Route path="/search-results" exact={true}>
+          <SearchResult />
         </Route>
       </Switch>
     </BrowserRouter>
