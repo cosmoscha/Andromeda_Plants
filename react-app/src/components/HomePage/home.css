@@ -1,7 +1,7 @@
 .splash-container {
   background-image: url("pictureeesflytrap.jpg");
   padding-top: 20vh;
-  height: 90vh;
+  height: 70vh;
   background-color: red;
   background-position: center;
   background-size: cover;
@@ -37,22 +37,16 @@
   background-color: grey;
 }
 
-.sample1 {
-  grid-column: 1/2;
-  height: 350px;
-  width: 350px;
-  background-color: darkcyan;
-  border: red;
+.sample-product-container {
+  height: 600px;
+  width: 550px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-.sample2 {
-  grid-column: 2/3;
-  height: 350px;
-  width: 350px;
-  background-color: blueviolet;
-}
-.sample3 {
-  grid-column: 3/4;
-  height: 350px;
-  width: 350px;
-  background-color: yellow;
+
+.sample-link-container {
+  display: flex;
+  justify-content: center;
 }

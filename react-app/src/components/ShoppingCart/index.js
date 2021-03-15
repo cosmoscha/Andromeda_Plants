@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
-import { buyProducts } from "../../store/shoppingCart";
+import { buyProducts, removeProduct } from "../../store/shoppingCart";
 import "./cart.css";
 const ShoppingCart = () => {
   const dispatch = useDispatch();
@@ -34,6 +34,9 @@ const ShoppingCart = () => {
                 <img src={photo[0].photoKey} className="productImages2" />
                 <div>{i[0].price * quant}</div>
                 <div>{quant}</div>
+                <button onClick={() => dispatch(removeProduct(arr1[i]))}>
+                  remove from cart
+                </button>
               </div>
             </>
           );

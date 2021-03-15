@@ -1,5 +1,6 @@
 const CHECKOUT = "shoppingCart/checkout";
 const CHECKED_OUT = "shoppingCart/checkedout";
+const REMOVE = "shoppingCart/removeItem";
 const checkout = (products) => {
   return {
     type: CHECKOUT,
@@ -11,6 +12,13 @@ const checked_out = (products) => {
   return {
     type: CHECKED_OUT,
     payload: products,
+  };
+};
+
+const removeItem = (product) => {
+  return {
+    type: REMOVE,
+    payload: product,
   };
 };
 
@@ -28,6 +36,10 @@ export const buyProducts = (getItems) => async (dispatch) => {
 
   dispatch(checkout(boughtProducts));
   return boughtProducts;
+};
+
+export const removeProduct = (itemId) => async (dispatch) => {
+  dispatch(removeItem(itemId));
 };
 
 export const completeOrder = (address) => async (dispatch) => {
@@ -52,7 +64,6 @@ const initialState = [];
 
 const checkoutReducer = (state = initialState, action) => {
   let newState;
-
   switch (action.type) {
     case CHECKOUT:
       newState = action.payload;
@@ -60,6 +71,21 @@ const checkoutReducer = (state = initialState, action) => {
     case CHECKED_OUT:
       newState = null;
       return newState;
+    case REMOVE:
+      // newState = [...state].products[action.payload];
+      // newState = null;
+      // return newState;
+      // return {
+      //   ...state,
+      //   products: [
+      //     ...state.products.filter((product) => product.id !== action.payload),
+      //   ],
+      // };
+      return {
+        ...state,
+        products: [...state.products.splice(action.payload, 1)],
+      };
+
     default:
       return state;
   }

@@ -14,7 +14,7 @@ const SearchResult = () => {
           return (
             <>
               <NavLink to={`/products/${product.id}`}>{product.name}</NavLink>
-              <img src={product.photos[0].photoKey} />
+              <img src={product.photos[0].photoKey} className="productImages" />
             </>
           );
         });

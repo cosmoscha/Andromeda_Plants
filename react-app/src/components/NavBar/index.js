@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import "./NavBar.css";
 import ProfileButton from "./ProfileButton";
-import PlantMenu from "../../components/HomePage/PlantMenu";
+// import PlantMenu from "../../components/HomePage/PlantMenu";
 import { useDispatch } from "react-redux";
 import { searchPlants } from "../../store/search";
 
@@ -10,6 +10,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");
+  const [link, setLink] = useState(false);
 
   const searchThings = async (e) => {
     e.preventDefault();
@@ -45,10 +46,19 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
             />
           </div>
         </div>
+        <div className="tagLinks">
+          <NavLink to="/tags/1">Nepenthes</NavLink>
+          <NavLink to="/tags/2">Cephalotus</NavLink>
+          <NavLink to="/tags/3">Venus Flytraps</NavLink>
+          <NavLink to="/tags/4">Butterworts</NavLink>
+          <NavLink to="/tags/5">Sundews</NavLink>
+          <NavLink to="/tags/6">Sarracenias</NavLink>
+          <NavLink to="/tags/7">Bladderworts</NavLink>
+        </div>
       </div>
-      <div className="test">
+      {/* <div className="test">
         <PlantMenu />
-      </div>
+      </div> */}
     </nav>
   );
 };

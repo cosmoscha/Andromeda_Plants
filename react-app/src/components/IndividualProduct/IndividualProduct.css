@@ -2,27 +2,46 @@
   width: 500px;
   height: 500px;
   border-radius: 40%;
+  grid-column: 2/3;
 }
 
 .imageContainer {
-  padding-left: 10vw;
   padding-top: 30vh;
   background-color: burlywood;
-  display: grid;
-  grid-template-areas: ;
-}
-.image-grid {
-  height: 100%;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 500px 500px;
-  /* grid-template-rows: 50% 50%; */
+  /* display: grid;
+  grid-column: 1fr 1fr 1fr; */
 }
 
 .reviews-grid {
-  background-color: red;
+  /* background-color: red; */
   display: grid;
   grid-template-columns: 105px 105px;
   grid-template-rows: 50% 50%;
+  padding-bottom: 10vh;
+  justify-content: center;
+}
+
+.product-information {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 /* @import "react-alice-carousel/lib/alice-carousel.css"; */
+
+.alice-carousel {
+  width: 500px;
+}
+
+.addRemove {
+  display: flex;
+  justify-content: center;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+  align-items: center;
+}
+.submitReview {
+display: flex;
+justify-content: center;
+  padding-bottom: 10vh;
+}

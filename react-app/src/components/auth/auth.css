@@ -1,12 +1,15 @@
 .login-form {
-  background-color: red;
-  width: 600px;
+  background-color:rgb(25, 128, 25);
+  width: 550px;
   height: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 30vh;
+  justify-content: space-evenly;
+  border: solid;
+  border-radius: 20%;
 }
+
 .login-form > div {
   margin: 0 20px;
   padding-top: 10px;
@@ -16,11 +19,12 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
+  padding-top: 30vh;
 }
 
 .container-background {
   background-color: grey;
-  height: 85vh;
+  height: 100vh;
 }
 .login-title {
   font-size: 3em;

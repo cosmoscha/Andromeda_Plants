@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import "./NavBar.css";
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
+import ShopIcon from "@material-ui/icons/Shop";
 import { useSelector } from "react-redux";
 import { addUser } from "../../store/session";
 import { authenticate } from "../../services/auth";
@@ -46,7 +47,7 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
     <>
       <div className="button-container">
         <NavLink to="/ShoppingCart">
-          <AccountBoxIcon fontSize="large" />
+          <ShopIcon fontSize="large" />
         </NavLink>
         <button
           onClick={() => setShowMenu(showMenu === true ? false : true)}

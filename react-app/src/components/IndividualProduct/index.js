@@ -121,21 +121,54 @@ const IndividualProduct = () => {
       {userProducts && productInfo && (
         <div className="page-container">
           <div className="imageContainer">
-            <div>{productInfo.name}</div>
-            <div className="image-grid">{photoArrMapper(photosArr)}</div>
-            <div>price: ${productInfo.price}</div>
-            <div>
-              <button onClick={quantityToCart}>get me some baby</button>
+            <div className="product-information">
+              <div>{productInfo.name}</div>
+              <div className="image-grid-product">
+                {photoArrMapper(photosArr)}
+              </div>
+              <div>price for each: ${productInfo.price}</div>
+              <div>
+                description:Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Maxime mollitia, molestiae quas vel sint commodi
+                repudiandae consequuntur voluptatum laborum numquam blanditiis
+                harum quisquam eius sed odit fugiat iusto fuga praesentium
+                optio, eaque rerum! Provident similique accusantium nemo autem.
+                Veritatis obcaecati tenetur iure eius earum ut molestias
+                architecto voluptate aliquam nihil, eveniet aliquid culpa
+                officia aut! Impedit sit sunt quaerat, odit, tenetur error,
+                harum nesciunt ipsum debitis quas aliquid. Reprehenderit, quia.
+                Quo neque error repudiandae fuga? Ipsa laudantium molestias eos
+                sapiente officiis modi at sunt excepturi expedita sint? Sed
+                quibusdam recusandae alias error harum maxime adipisci amet
+                laborum. Perspiciatis minima nesciunt dolorem! Officiis iure
+                rerum voluptates a cumque velit quibusdam sed amet tempora. Sit
+                laborum ab, eius fugit doloribus tenetur fugiat, temporibus enim
+                commodi iusto libero magni deleniti quod quam consequuntur!
+                Commodi minima excepturi repudiandae velit hic maxime
+                doloremque. Quaerat provident commodi consectetur veniam
+                similique ad earum omnis ipsum saepe, voluptas, hic voluptates
+                pariatur est explicabo fugiat, dolorum eligendi quam cupiditate
+                excepturi mollitia maiores labore suscipit quas? Nulla, placeat.
+                Voluptatem quaerat non architecto ab laudantium modi minima sunt
+                esse temporibus sint culpa, recusandae aliquam numquam totam
+                ratione voluptas quod exercitationem fuga. Possimus quis earum
+                veniam quasi aliquam eligendi, placeat qui corporis!
+                {productInfo.description}
+              </div>
+            </div>
+            <div></div>
+            <div className="addRemove">
+              <button onClick={quantityToCart}>add</button>
               <div>{count} available</div>
-              <button onClick={quantityOutCart}>put it back im broke</button>
+              <button onClick={quantityOutCart}>remove</button>
+              <div>
+                <button onClick={addProduct}>add {test} to cart</button>
+                subtotal: ${subTotal}
+              </div>
             </div>
-            <div>description: {productInfo.description}</div>
+
             <div className="reviews-grid">{reviewsArrMapper(reviewsArr)}</div>
-            <div>
-              <button onClick={addProduct}>add {test} to cart</button>
-              subtotal: ${subTotal}
-            </div>
-            <form onSubmit={submitReview}>
+            <form onSubmit={submitReview} className="submitReview">
               <input
                 onChange={(e) => setReview(e.target.value)}
                 value={review}

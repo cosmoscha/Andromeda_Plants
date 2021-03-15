@@ -43,7 +43,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
               <div>{error}</div>
             ))}
           </div>
-          <div className="login-title">I have backpain</div>
+          <div className="login-title">Login to your account</div>
           <div>
             <label htmlFor="email">Email</label>
             <input

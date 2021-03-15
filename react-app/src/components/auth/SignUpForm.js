@@ -42,9 +42,9 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
     <div className="container-background">
       <div className="loginForm-container">
         <form onSubmit={onSignUp} className="login-form">
-          <div className="login-title">I have leg pain</div>
+          <div className="login-title">Create an account</div>
           <div>
-            <label>User Name</label>
+            <label>User Name:</label>
             <input
               type="text"
               name="username"
@@ -53,7 +53,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
             ></input>
           </div>
           <div>
-            <label>Email</label>
+            <label>Email: </label>
             <input
               type="text"
               name="email"
@@ -62,7 +62,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
             ></input>
           </div>
           <div>
-            <label>Password</label>
+            <label>Password: </label>
             <input
               type="password"
               name="password"
@@ -71,7 +71,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
             ></input>
           </div>
           <div>
-            <label>Repeat Password</label>
+            <label>Repeat Password: </label>
             <input
               type="password"
               name="repeat_password"

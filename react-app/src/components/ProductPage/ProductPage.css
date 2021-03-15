@@ -1,6 +1,6 @@
 .image-grid {
-  height: 80%;
-  width: 79%;
+  /* height: 80%;
+  width: 79%; */
   display: grid;
   grid-template-columns: 500px 500px 500px;
 }
