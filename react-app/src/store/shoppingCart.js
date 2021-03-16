@@ -23,19 +23,20 @@ const removeItem = (product) => {
 };
 
 export const buyProducts = (getItems) => async (dispatch) => {
-  let boughtProducts = await fetch(`/api/products/checkout`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      getItems: getItems,
-    }),
-  });
-  boughtProducts = await boughtProducts.json();
+  // let boughtProducts = await fetch(`/api/products/checkout`, {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify({
+  //     getItems: getItems,
+  //   }),
+  // });
+  // boughtProducts = await boughtProducts.json();
 
-  dispatch(checkout(boughtProducts));
-  return boughtProducts;
+  // dispatch(checkout(boughtProducts));
+  dispatch(checkout(getItems));
+  return getItems;
 };
 
 export const removeProduct = (itemId) => async (dispatch) => {
@@ -72,20 +73,13 @@ const checkoutReducer = (state = initialState, action) => {
       newState = null;
       return newState;
     case REMOVE:
-      // newState = [...state].products[action.payload];
-      // newState = null;
-      // return newState;
       // return {
       //   ...state,
-      //   products: [
-      //     ...state.products.filter((product) => product.id !== action.payload),
-      //   ],
+      //   products: [...state.splice(action.payload, 1)],
       // };
-      return {
-        ...state,
-        products: [...state.products.splice(action.payload, 1)],
-      };
 
+      newState = state.filter((val) => val.productId !== action.payload);
+      return newState;
     default:
       return state;
   }

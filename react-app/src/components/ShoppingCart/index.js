@@ -9,32 +9,35 @@ const ShoppingCart = () => {
 
   const user = useSelector((state) => state.session.user);
   const loaded = useSelector((state) => state.session.loaded);
-  const checkout = useSelector((state) => state.checkout.products);
+  const checkout = useSelector((state) => state.checkout);
   let getItems = Object.values(sessionStorage);
+
+  getItems = getItems.map((item) => {
+    return JSON.parse(item);
+  });
 
   useEffect(() => {
     dispatch(buyProducts(getItems));
   }, [dispatch]);
 
-  const checkoutMapper = (arr1, arr2) => {
-    let newArr;
+  console.log("getitems", checkout);
+  const checkoutMapper = (arr) => {
+    console.log("arr", arr);
     if (checkout) {
       if (checkout.length) {
-        newArr = arr1.map((product, i) => {
-          return [product, arr2[i]];
-        });
-        newArr = newArr.map((i) => {
-          const quant = JSON.parse(i[1]).quantity;
-          const photo = i[0].photos;
-
+        arr = arr.map((product) => {
+          console.log("arrindex", product.productId);
+          console.log("product within the map", product);
           return (
             <>
-              <div key={i.id}>
-                <div>{i[0].name}</div>
-                <img src={photo[0].photoKey} className="productImages2" />
-                <div>{i[0].price * quant}</div>
-                <div>{quant}</div>
-                <button onClick={() => dispatch(removeProduct(arr1[i]))}>
+              <div key={product.productId} className="checkoutItems">
+                <div>{product.name}</div>
+                <img src={product.photo} />
+                <div>{product.price}</div>
+                <div>{product.quantity}</div>
+                <button
+                  onClick={() => dispatch(removeProduct(product.productId))}
+                >
                   remove from cart
                 </button>
               </div>
@@ -43,7 +46,7 @@ const ShoppingCart = () => {
         });
       }
     }
-    return newArr;
+    return arr;
   };
 
   const goToCheckout = () => {

@@ -1,3 +1,8 @@
 .pages-container {
   padding-top: 30vh;
 }
+
+.checkoutItems img {
+  width: 500px;
+  height: 500px;
+}

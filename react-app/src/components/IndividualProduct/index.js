@@ -35,6 +35,23 @@ const IndividualProduct = () => {
     }
   }, [setCount, quantity]);
 
+  const addProduct = (e) => {
+    if (test === 0) {
+      console.log("add something you idiot");
+      return;
+    }
+    e.preventDefault();
+    const val = {
+      productId: productInfo.id,
+      quantity: test,
+      photo: photos[0].photoKey,
+      price: productInfo.price,
+      name: productInfo.name,
+    };
+
+    sessionStorage.setItem(`productId ${productId}`, JSON.stringify(val));
+  };
+
   const reviewsArr = [];
   const photosArr = [];
   const reviewsArrMapper = (arr) => {
@@ -79,20 +96,6 @@ const IndividualProduct = () => {
   };
   let test = quantity - count;
   let subTotal = productInfo.price * test;
-
-  const addProduct = (e) => {
-    if (test === 0) {
-      console.log("add something you idiot");
-      return;
-    }
-    e.preventDefault();
-    const val = {
-      productId: productInfo.id,
-      quantity: test,
-    };
-
-    sessionStorage.setItem(`productId ${productId}`, JSON.stringify(val));
-  };
 
   const ratings = [1, 2, 3, 4, 5];
   const quantityToCart = () => {
@@ -158,11 +161,17 @@ const IndividualProduct = () => {
             </div>
             <div></div>
             <div className="addRemove">
-              <button onClick={quantityToCart}>add</button>
+              <button onClick={quantityToCart} className="button">
+                add
+              </button>
               <div>{count} available</div>
-              <button onClick={quantityOutCart}>remove</button>
+              <button onClick={quantityOutCart} className="button">
+                remove
+              </button>
               <div>
-                <button onClick={addProduct}>add {test} to cart</button>
+                <button className="button" onClick={addProduct}>
+                  add {test} to cart
+                </button>
                 subtotal: ${subTotal}
               </div>
             </div>
@@ -184,7 +193,7 @@ const IndividualProduct = () => {
                   </option>
                 ))}
               </select>
-              <button id={review.id} type="submit">
+              <button id={review.id} type="submit" className="button">
                 submit review
               </button>
             </form>
