@@ -11,6 +11,7 @@ const ShoppingCart = () => {
   const loaded = useSelector((state) => state.session.loaded);
   const checkout = useSelector((state) => state.checkout);
   let getItems = Object.values(sessionStorage);
+  console.log("getItems initial values", getItems);
 
   getItems = getItems.map((item) => {
     return JSON.parse(item);
@@ -20,33 +21,29 @@ const ShoppingCart = () => {
     dispatch(buyProducts(getItems));
   }, [dispatch]);
 
-  console.log("getitems", checkout);
-  const checkoutMapper = (arr) => {
-    console.log("arr", arr);
-    if (checkout) {
-      if (checkout.length) {
-        arr = arr.map((product) => {
-          console.log("arrindex", product.productId);
-          console.log("product within the map", product);
-          return (
-            <>
-              <div key={product.productId} className="checkoutItems">
-                <div>{product.name}</div>
-                <img src={product.photo} />
-                <div>{product.price}</div>
-                <div>{product.quantity}</div>
-                <button
-                  onClick={() => dispatch(removeProduct(product.productId))}
-                >
-                  remove from cart
-                </button>
-              </div>
-            </>
-          );
-        });
-      }
-    }
-    return arr;
+  const removeFromStore = (e) => {
+    sessionStorage.removeItem(`productId ${e.target.value}`);
+    dispatch(buyProducts(getItems));
+  };
+
+  const checkoutMapper = () => {
+    let result = getItems.map((product) => {
+      console.log("products", product);
+      return (
+        <>
+          <div key={product.productId} className="checkoutItems">
+            <div>{product.name}</div>
+            <img src={product.photo} />
+            <div>{product.price}</div>
+            <div>{product.quantity}</div>
+            <button onClick={removeFromStore} value={product.productId}>
+              remove from cart
+            </button>
+          </div>
+        </>
+      );
+    });
+    return result;
   };
 
   const goToCheckout = () => {
@@ -56,7 +53,7 @@ const ShoppingCart = () => {
   return loaded && user ? (
     <>
       <div className="pages-container">
-        <div>{checkoutMapper(checkout, getItems)}</div>
+        <div>{checkoutMapper()}</div>
         <div> hullo world</div>
         <div>
           <button onClick={goToCheckout}> checkout</button>
