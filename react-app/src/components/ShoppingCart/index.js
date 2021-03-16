@@ -50,7 +50,7 @@ const ShoppingCart = () => {
     history.push("/checkout");
   };
 
-  return loaded && user ? (
+  return (
     <>
       <div className="pages-container">
         <div>{checkoutMapper()}</div>
@@ -60,9 +60,7 @@ const ShoppingCart = () => {
         </div>
       </div>
     </>
-  ) : loaded ? (
-    <Redirect to="/login" />
-  ) : null;
+  );
 };
 
 export default ShoppingCart;

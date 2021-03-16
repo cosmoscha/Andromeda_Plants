@@ -111,15 +111,20 @@ const IndividualProduct = () => {
     setCount(count + 1);
   };
   const submitReview = (e) => {
-    const formValues = {
-      id: productId,
-      review: review,
-      rating: rating,
-    };
+    if (user) {
+      const formValues = {
+        id: productId,
+        review: review,
+        rating: rating,
+      };
 
-    dispatch(makeReview(formValues));
+      dispatch(makeReview(formValues));
+    } else {
+      e.preventDefault();
+      alert("you must login to add a review");
+    }
   };
-  return loaded && user ? (
+  return (
     <>
       {userProducts && productInfo && (
         <div className="page-container">
@@ -201,9 +206,7 @@ const IndividualProduct = () => {
         </div>
       )}
     </>
-  ) : loaded ? (
-    <Redirect to="/login" />
-  ) : null;
+  );
 };
 
 export default IndividualProduct;

@@ -38,7 +38,7 @@ const ProductPage = () => {
     return arr;
   };
 
-  return loaded && user ? (
+  return (
     <>
       {products && (
         <div className="image-grid-container">
@@ -49,8 +49,6 @@ const ProductPage = () => {
         </div>
       )}
     </>
-  ) : loaded ? (
-    <Redirect to="/login" />
-  ) : null;
+  );
 };
 export default ProductPage;
