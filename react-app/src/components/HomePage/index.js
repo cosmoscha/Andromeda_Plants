@@ -15,40 +15,15 @@ const HomePage = () => {
 
   const products = useSelector((state) => state.products.products);
   console.log("product store", products);
-  // const [test, setTest] = useState("hidden");
-  // const tester = () => {
-  //   if (test === "") {
-  //     setTest("hidden");
-  //   } else {
-  //     setTest("");
-  //   }
-  // };
 
-  // const handleDragStart = (e) => e.preventDefault();
-  // const productMapper = (arr) => {
-  //   if (products) {
-  //     arr = arr.map((product) => {
-  //       return (
-  //         <div onDragStart={handleDragStart}>
-  //           <img src={product.photos[0]} className="productImages" />
-  //           <div>{product.name}</div>
-  //         </div>
-  //       );
-  //     });
-  //   }
-  //   return <AliceCarousel mouseTracking items={arr} />;
-  // };
-
-  const getRandInt = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  };
   const getRandomProduct = () => {
     if (products) {
-      let sampleProduct = products[getRandInt(1, products.length - 1)];
-      console.log("sampleproduct", sampleProduct);
+      // let sampleProduct = products[getRandInt(1, products.length - 1)];
+      // console.log("sampleproduct", sampleProduct);
+
       return (
         <div className="sample-product-container">
-          <img
+          {/* <img
             src={sampleProduct.photos[0].photoKey}
             className="productImages"
           />
@@ -56,7 +31,7 @@ const HomePage = () => {
             <NavLink to={`/products/${sampleProduct.id}`}>
               {sampleProduct.name}
             </NavLink>
-          </div>
+          </div> */}
         </div>
       );
     }

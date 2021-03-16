@@ -5,6 +5,7 @@ import ProfileButton from "./ProfileButton";
 // import PlantMenu from "../../components/HomePage/PlantMenu";
 import { useDispatch } from "react-redux";
 import { searchPlants } from "../../store/search";
+import { getProductTag } from "../../store/tags";
 
 const NavBar = ({ authenticated, setAuthenticated }) => {
   const history = useHistory();
@@ -16,6 +17,11 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
     e.preventDefault();
     dispatch(searchPlants(search));
     history.push("/search-results");
+  };
+
+  const navigator = (e) => {
+    dispatch(getProductTag(e.target.value));
+    history.push(`/tags/${e.target.value}`);
   };
   return (
     <nav>
@@ -47,13 +53,27 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
           </div>
         </div>
         <div className="tagLinks">
-          <NavLink to="/tags/1">Nepenthes</NavLink>
-          <NavLink to="/tags/2">Cephalotus</NavLink>
-          <NavLink to="/tags/3">Venus Flytraps</NavLink>
-          <NavLink to="/tags/4">Butterworts</NavLink>
-          <NavLink to="/tags/5">Sundews</NavLink>
-          <NavLink to="/tags/6">Sarracenias</NavLink>
-          <NavLink to="/tags/7">Bladderworts</NavLink>
+          <button onClick={navigator} value="1">
+            Nepenthes
+          </button>
+          <button onClick={navigator} value="2">
+            Cephalotus
+          </button>
+          <button onClick={navigator} value="3">
+            Venus Flytraps
+          </button>
+          <button onClick={navigator} value="4">
+            Butterworts
+          </button>
+          <button onClick={navigator} value="5">
+            Sundews
+          </button>
+          <button onClick={navigator} value="6">
+            Sarracenias
+          </button>
+          <button onClick={navigator} value="7">
+            Bladderworts
+          </button>
         </div>
       </div>
       {/* <div className="test">

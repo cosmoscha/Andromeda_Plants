@@ -96,3 +96,9 @@
   display: flex;
   justify-content: space-evenly;
 }
+
+.tagLinks button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
