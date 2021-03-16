@@ -18,36 +18,30 @@ import SearchResult from "./components/SearchResults";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(true);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    (async () => {
-      const user = await authenticate();
-      if (!user.errors) {
-        setAuthenticated(true);
-        dispatch(addUser(user));
-      }
-      setLoaded(true);
-    })();
-  }, [dispatch]);
+  // useEffect(() => {
+  //   (async () => {
+  //     const user = await authenticate();
+  //     if (!user.errors) {
+  //       setAuthenticated(true);
+  //       dispatch(addUser(user));
+  //     }
+  //     setLoaded(true);
+  //   })();
+  // }, [dispatch]);
 
-  if (!loaded) {
-    return null;
-  }
+  // if (!loaded) {
+  //   return null;
+  // }
 
   return (
     <BrowserRouter>
-      <NavBar
-        authenticated={authenticated}
-        setAuthenticated={setAuthenticated}
-      />
+      <NavBar />
       <Switch>
         <Route path="/login" exact={true}>
-          <LoginForm
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
+          <LoginForm />
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm
@@ -55,23 +49,16 @@ function App() {
             setAuthenticated={setAuthenticated}
           />
         </Route>
-        <ProtectedRoute
-          path="/users"
-          exact={true}
-          authenticated={authenticated}
-        >
+        <Route path="/users" exact={true}>
           <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute
-          path="/users/:userId"
-          exact={true}
-          authenticated={authenticated}
-        >
+        </Route>
+        <Route path="/users/:userId" exact={true}>
           <User />
-        </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
+        </Route>
+
+        <Route path="/" exact={true}>
           <HomePage />
-        </ProtectedRoute>
+        </Route>
         <Route path="/products/:id" exact={true}>
           <IndividualProduct />
         </Route>
