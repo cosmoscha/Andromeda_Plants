@@ -3,7 +3,9 @@ from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
-
+from werkzeug.utils import secure_filename
+from ..helpers import *
+from ..config import Config
 auth_routes = Blueprint('auth', __name__)
 
 
@@ -63,6 +65,7 @@ def sign_up():
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        s3_photo_url = 'http://petstagram-top-25.s3.amazonaws.com/default_profile.jpeg'
         file = form.data['profile_photo_file']
         if file:
             file.filename = secure_filename(file.filename)
