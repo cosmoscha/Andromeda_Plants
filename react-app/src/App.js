@@ -21,27 +21,35 @@ function App() {
   const [loaded, setLoaded] = useState(true);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   (async () => {
-  //     const user = await authenticate();
-  //     if (!user.errors) {
-  //       setAuthenticated(true);
-  //       dispatch(addUser(user));
-  //     }
-  //     setLoaded(true);
-  //   })();
-  // }, [dispatch]);
+  console.log("authenticated status on app", authenticated)
 
-  // if (!loaded) {
-  //   return null;
-  // }
+  useEffect(() => {
+    (async () => {
+      const user = await authenticate();
+      if (!user.errors) {
+        setAuthenticated(true);
+        dispatch(addUser(user));
+      }
+      setLoaded(true);
+    })();
+  }, [dispatch]);
+
+  if (!loaded) {
+    return null;
+  }
 
   return (
     <BrowserRouter>
-      <NavBar />
+      <NavBar  
+      authenticated={authenticated}
+      setAuthenticated={setAuthenticated}
+      />
       <Switch>
         <Route path="/login" exact={true}>
-          <LoginForm />
+          <LoginForm 
+          authenticated={authenticated}
+          setAuthenticated={setAuthenticated}
+          />
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm

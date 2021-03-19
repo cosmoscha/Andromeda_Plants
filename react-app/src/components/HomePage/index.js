@@ -17,33 +17,37 @@ const HomePage = () => {
   console.log("product store", products);
 
   const getRandomProduct = () => {
+    let productsMap;
     if (products) {
-      // let sampleProduct = products[getRandInt(1, products.length - 1)];
-      // console.log("sampleproduct", sampleProduct);
-
-      return (
-        <div className="sample-product-container">
-          {/* <img
-            src={sampleProduct.photos[0].photoKey}
-            className="productImages"
-          />
-          <div className="sample-link-container">
-            <NavLink to={`/products/${sampleProduct.id}`}>
-              {sampleProduct.name}
-            </NavLink>
-          </div> */}
-        </div>
-      );
+      if (products.length) {
+        productsMap = products
+          .splice(-products.length, 9)
+          .reverse()
+          .map((product) => {
+            const secondArr = product.photos[0];
+            return (
+              <>
+                <div key={product.id} className="product-container">
+                  <img src={secondArr.photoKey} className="productImages2" />
+                  <div>{product.name}</div>
+                  <div>quantity: {product.quantity}</div>
+                  <div> added on {product.created.slice(0, 16)}</div>
+                  <NavLink to={`/products/${product.id}`}> buy now </NavLink>
+                </div>
+              </>
+            );
+          });
+      }
     }
+    return productsMap;
   };
 
   return (
     <>
       <div className="splash-container"></div>
       <div className="product-preview-container">
-        <div>{getRandomProduct()}</div>
-        <div>{getRandomProduct()}</div>
-        <div>{getRandomProduct()}</div>
+        <hl>recently added</hl>
+        <div className="image-grid">{getRandomProduct()}</div>
       </div>
     </>
   );

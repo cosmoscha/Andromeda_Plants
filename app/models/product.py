@@ -1,5 +1,7 @@
 from .db import db
 import datetime
+
+
 class Product(db.Model):
     __tablename__ = 'products'
 
@@ -14,14 +16,13 @@ class Product(db.Model):
     photos = db.relationship("Photo", back_populates="product")
     tags = db.relationship("ProductTag", back_populates="product")
 
-
-
     def to_dict(self):
         return {
             "id": self.id,
-            "name":self.name,
+            "name": self.name,
             "description": self.description,
             "quantity": self.quantity,
-            "price" : self.price,
+            "price": self.price,
+            "created": self.createdAt,
             "photos": [photo.to_dict() for photo in self.photos]
         }
