@@ -21,6 +21,8 @@ function App() {
   const [loaded, setLoaded] = useState(true);
   const dispatch = useDispatch();
 
+  console.log("authenticated status on app", authenticated)
+
   useEffect(() => {
     (async () => {
       const user = await authenticate();
@@ -38,10 +40,16 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+      <NavBar  
+      authenticated={authenticated}
+      setAuthenticated={setAuthenticated}
+      />
       <Switch>
         <Route path="/login" exact={true}>
-          <LoginForm />
+          <LoginForm 
+          authenticated={authenticated}
+          setAuthenticated={setAuthenticated}
+          />
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm

@@ -12,6 +12,8 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
   const [showMenu, setShowMenu] = useState(false);
   const user = useSelector((state) => state.session.user);
 
+  console.log("authenticated status on profile btton", authenticated)
+
   const profileButtons = (
     <>
       {authenticated && (
