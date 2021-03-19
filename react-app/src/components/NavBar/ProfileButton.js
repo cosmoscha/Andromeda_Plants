@@ -10,7 +10,7 @@ import { authenticate } from "../../services/auth";
 
 const ProfileButton = ({ authenticated, setAuthenticated }) => {
   const [showMenu, setShowMenu] = useState(false);
-  // const user = useSelector((state) => state.session.user);
+  const user = useSelector((state) => state.session.user);
 
   const profileButtons = (
     <>
@@ -20,9 +20,7 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
             <LogoutButton setAuthenticated={setAuthenticated} />
           </div>
           <div>
-            <NavLink to="/users" exact={true} activeClassName="active">
-              Users
-            </NavLink>
+      
           </div>
         </>
       )}
