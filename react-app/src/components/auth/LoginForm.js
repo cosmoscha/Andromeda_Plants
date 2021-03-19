@@ -10,8 +10,8 @@ import { Modal } from 'react-responsive-modal';
 const LoginForm = ({ authenticated, setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
-  const [open, setOpen] = useState(false);
   const [password, setPassword] = useState("");
+  const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
 
   const onOpenModal = () => setOpen(true);
