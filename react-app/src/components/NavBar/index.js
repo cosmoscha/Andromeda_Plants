@@ -48,12 +48,12 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
           </form>
         </div>
         <div className="nav-group">
-          <div className="buttonWrapper">
+        
             <ProfileButton
               authenticated={authenticated}
               setAuthenticated={setAuthenticated}
               />
-          </div>
+          
               {user && (
             <img src={user.profilePhotoUrl} style={{width:"50px", height:"50px"}}/>
 

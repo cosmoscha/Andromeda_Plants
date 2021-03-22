@@ -1,6 +1,9 @@
+
+
+
 .productImages {
-  width: 500px;
-  height: 500px;
+  width: 600px;
+  height: 600px;
   border-radius: 40%;
   grid-column: 2/3;
 }
@@ -8,37 +11,116 @@
 .imageContainer {
   padding-top: 30vh;
   background-color: burlywood;
-  /* display: grid;
-  grid-column: 1fr 1fr 1fr; */
+
+}
+
+.product-name {
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
 }
 
 .reviews-grid {
-  /* background-color: red; */
+
   display: grid;
-  grid-template-columns: 105px 105px;
+  grid-template-columns: 110px 110px;
   grid-template-rows: 50% 50%;
-  padding-bottom: 10vh;
+  padding-bottom: 10px;
+  padding-top: 10px;
   justify-content: center;
 }
 
 .product-information {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
 }
-/* @import "react-alice-carousel/lib/alice-carousel.css"; */
 
-.alice-carousel {
-  width: 500px;
+.description {
+  grid-column: 2/3;
+  display: grid;
+  height: 700px;
 }
+
+.description div {
+   display: flex;
+  justify-content: center;
+
+}
+
+/* alice carousel info  */
+.alice-carousel {
+  width: 600px;
+ border: solid;
+ grid-column: 1/2;
+  
+}
+
+.alice-carousel__wrapper {
+  border-radius: 50%;
+  border: solid;
+  border-color: black;
+}
+.alice-carousel__dots {
+  display: none;
+}
+
+.alice-carousel__next-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  
+
+}
+
+.alice-carousel__prev-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  
+
+}
+
+.alice-carousel__next-btn-item {
+  border-radius: 50%;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  background-color: wheat;
+}
+.alice-carousel__prev-btn-item {
+border-radius: 45%;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  background-color: wheat;
+}
+.alice-carousel__prev-btn-item:hover{
+box-shadow: 3px 3px 5px rgba(0, 0, 0, .5)
+}
+
+.alice-carousel__next-btn-item:hover{
+box-shadow: 3px 3px 5px rgba(0, 0, 0, .5)
+}
+.alice-carousel__next-btn-item span{
+
+  font-size: 60px;
+}
+.alice-carousel__prev-btn-item span{
+
+  font-size: 60px;
+}
+/* end alice .alice-carousel info */
 
 .addRemove {
   display: flex;
-  justify-content: center;
-  padding-top: 10vh;
-  padding-bottom: 10vh;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 10px;
   align-items: center;
+  flex-direction: column;
+  border: solid;
+  border-color: black;
 }
 .submitReview {
 display: flex;
@@ -46,9 +128,6 @@ justify-content: center;
   padding-bottom: 10vh;
 }
 
-/* .button:hover {
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, .5); */
-/* } */
 
 .addRemove button:hover {
   box-shadow: 3px 3px 5px rgba(0, 0, 0, .5)
