@@ -109,7 +109,9 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
       {!authenticated && !signedup &&(
         <>
           <div>
-            <button onClick={onOpenModal}>login or signup</button>
+            <button onClick={onOpenModal}>
+              <AccountBoxIcon fontSize="large" />
+              </button>
             <Modal open={open} onClose={onCloseModal} center>
                 <div className="container-background">
                     <div className="loginForm-container">
@@ -158,7 +160,7 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
       {!authenticated && signedup && (
         <>
         <div>
-            <button onClick={onOpenModal}>login or signup</button>
+            <button onClick={onOpenModal}><AccountBoxIcon fontSize="large" /></button>
             <Modal open={open} onClose={onCloseModal} center>
               <div className="container-background">
                 <div className="loginForm-container">
@@ -236,6 +238,7 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
                       </div>
                     </div>
                     <button type="submit">Sign Up</button>
+                    <button onClick={()=> setSignedup(false)}> back to login</button>
                   </form>
                 </div>
               </div>
@@ -253,11 +256,11 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
     
       <div>
         {profileButtons}
+        
       </div>
 
         <NavLink to="/ShoppingCart" className="shoppingCart">
-          {/* <ShopIcon fontSize="large" /> */}
-          shopping button
+          <ShopIcon fontSize="large" />
         </NavLink>
      
     </>
