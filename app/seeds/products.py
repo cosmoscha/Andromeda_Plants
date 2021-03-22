@@ -22,7 +22,6 @@ def seed_products():
     Microdent = Product(name='Dionaea muscipula Microdent',description='hello', quantity=5, price = 200.00)
     paradoxa_TYPE = Product(name='Drosera paradoxa TYPE',description='hello', quantity=5, price = 200.00)
     petiolaris = Product(name='Drosera petiolaris',description='hello', quantity=5, price = 200.00)
-    splashPage = Product(name='spashPage',description='hello', quantity=5, price = 200.00)
     Porcelain = Product(name='Nepenthes ventricosa Porcelain',description='hello', quantity=5, price = 200.00)
     potosiensis = Product(name='Pinguicula potosiensis',description='hello', quantity=5, price = 200.00)
     slackii = Product(name='Drosera slackii',description='hello', quantity=5, price = 200.00)

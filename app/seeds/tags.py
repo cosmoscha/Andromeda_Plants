@@ -11,6 +11,12 @@ def seed_tags():
     Sarracenia = Tag(name='Sarracenia')
     Utricularia = Tag(name='Bladderwort')
 
+    Beginner = Tag(name='Beginner')
+    Outdoor = Tag(name='Outdoor Plants')
+    Indoor = Tag (name='Indoor Plants')
+
+    
+    
     db.session.add(Nepenthes)
     db.session.add(Cephalotus)
     db.session.add(Dionaea)
@@ -19,6 +25,11 @@ def seed_tags():
     db.session.add(Drosera)
     db.session.add(Sarracenia)
     db.session.add(Utricularia)
+
+    db.session.add(Beginner)
+    db.session.add(Outdoor)
+    db.session.add(Indoor)
+    
     db.session.commit()
 
 
