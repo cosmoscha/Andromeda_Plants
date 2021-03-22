@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import "./NavBar.css";
+import "./auth.css"
 import ProfileButton from "./ProfileButton";
 // import PlantMenu from "../../components/HomePage/PlantMenu";
 import { useDispatch, useSelector } from "react-redux";

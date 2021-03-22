@@ -19,12 +19,12 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
-  padding-top: 30vh;
 }
 
 .container-background {
   background-color: grey;
-  height: 100vh;
+  /* height: 100vh; */
+  border-radius: 20%;
 }
 .login-title {
   font-size: 3em;

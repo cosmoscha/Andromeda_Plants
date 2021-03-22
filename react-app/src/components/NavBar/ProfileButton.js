@@ -32,7 +32,10 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
   const user = useSelector((state) => state.session.user);
 
   const onOpenModal = () => setOpen(true);
-  const onCloseModal = () => setOpen(false);
+  const onCloseModal = () => {
+    setOpen(false);
+    setSignedup(false);
+  }
 
   console.log("authenticated status on profile btton", authenticated)
 
