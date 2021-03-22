@@ -45,7 +45,6 @@ def seed_products():
     db.session.add(Microdent)
     db.session.add(paradoxa_TYPE)
     db.session.add(petiolaris)
-    db.session.add(splashPage)
     db.session.add(Porcelain)
     db.session.add(potosiensis)
     db.session.add(slackii)

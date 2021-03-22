@@ -203,15 +203,14 @@ quasi aliquam eligendi, placeat qui corporis!</div>
                   </div>
               </div>
             </div>
-            <div></div>
-            
-
-            
+            <div style={{display: "flex", justifyContent: "center", paddingTop: "20px"}}>
             <form onSubmit={submitReview} className="submitReview">
               <input
                 onChange={(e) => setReview(e.target.value)}
                 value={review}
                 placeholder="add your review"
+                type="text"
+                className="reviewInput"
               ></input>
               <select
                 onChange={(e) => setRating(e.target.value)}
@@ -227,6 +226,16 @@ quasi aliquam eligendi, placeat qui corporis!</div>
                 submit review
               </button>
             </form>
+            </div>
+            
+
+            
+
+            {!reviewsArr.length && (
+              <div style={{display: "flex", justifyContent: "center"}}>
+                <div> no reviews yet for this product</div>
+                </div>
+            )}
 
             <div className="reviews-grid">{reviewsArrMapper(reviewsArr)}</div>
           </div>

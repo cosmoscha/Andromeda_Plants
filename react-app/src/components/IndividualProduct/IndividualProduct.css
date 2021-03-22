@@ -13,7 +13,6 @@
   background-color: burlywood;
 
 }
-
 .product-name {
   display: flex;
   justify-content: center;
@@ -145,8 +144,12 @@ box-shadow: 3px 3px 5px rgba(0, 0, 0, .5)
 }
 .submitReview {
 display: flex;
+flex-direction: column;
 justify-content: center;
-  padding-bottom: 10vh;
+}
+
+.reviewInput {
+  height: 300px;
 }
 
 
