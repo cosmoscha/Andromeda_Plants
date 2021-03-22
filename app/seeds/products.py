@@ -27,6 +27,8 @@ def seed_products():
     slackii = Product(name='Drosera slackii',description='hello', quantity=5, price = 200.00)
     yuccaDo1713 = Product(name='Pinguicula Yucca Do 1713',description='hello', quantity=5, price = 200.00)
     nelumbifoliaxreniformis1 = Product(name='Utricularia (nelumbifolia x reniformis)',description='hello', quantity=5, price = 200.00)
+
+    
     db.session.add(adelae)
     db.session.add(Briggsiana)
     db.session.add(agnatared)

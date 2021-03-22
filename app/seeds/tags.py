@@ -11,9 +11,9 @@ def seed_tags():
     Sarracenia = Tag(name='Sarracenia')
     Utricularia = Tag(name='Bladderwort')
 
-    Beginner = Tag(name='Beginner')
-    Outdoor = Tag(name='Outdoor Plants')
-    Indoor = Tag (name='Indoor Plants')
+    # Beginner = Tag(name='Beginner')
+    # Outdoor = Tag(name='Outdoor Plants')
+    # Indoor = Tag (name='Indoor Plants')
 
     
     
@@ -26,10 +26,10 @@ def seed_tags():
     db.session.add(Sarracenia)
     db.session.add(Utricularia)
 
-    db.session.add(Beginner)
-    db.session.add(Outdoor)
-    db.session.add(Indoor)
-    
+    # db.session.add(Beginner)
+    # db.session.add(Outdoor)
+    # db.session.add(Indoor)
+
     db.session.commit()
 
 
