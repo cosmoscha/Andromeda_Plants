@@ -112,7 +112,7 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
             <button onClick={onOpenModal}>
               <AccountBoxIcon fontSize="large" />
               </button>
-            <Modal open={open} onClose={onCloseModal} center>
+            <Modal open={open} onClose={onCloseModal} center className="modal">
                 <div className="container-background">
                     <div className="loginForm-container">
                       <form onSubmit={onLogin} className="login-form">
