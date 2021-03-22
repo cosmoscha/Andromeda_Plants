@@ -54,11 +54,6 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
               authenticated={authenticated}
               setAuthenticated={setAuthenticated}
               />
-          
-              {user && (
-            <img src={user.profilePhotoUrl} style={{width:"50px", height:"50px"}}/>
-
-          )}
         </div>
         <div className="tagLinks">
           <button onClick={navigator} value="1">

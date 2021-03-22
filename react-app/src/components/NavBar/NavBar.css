@@ -42,10 +42,8 @@
 
 .nav-group {
   grid-column: 6/7;
-  grid-row: 1/2;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  /* position: absolute; */
+ display: flex;
+ justify-content: space-around;
   
 }
 

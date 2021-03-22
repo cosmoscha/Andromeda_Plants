@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { logout } from "../../services/auth";
 import { logoutUser } from "../../store/session";
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const LogoutButton = ({ setAuthenticated }) => {
   const dispatch = useDispatch();
@@ -14,7 +15,9 @@ const LogoutButton = ({ setAuthenticated }) => {
 
   return (
     <>
-      <button onClick={onLogout}>Logout</button>
+      <button onClick={onLogout}>
+        <ExitToAppIcon fontSize="large" />
+      </button>
     </>
   );
 };

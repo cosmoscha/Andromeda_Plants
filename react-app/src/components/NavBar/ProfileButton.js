@@ -256,16 +256,17 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
 
   return (
     <>
-    
+    <NavLink to="/ShoppingCart" className="shoppingCart">
+          <ShopIcon fontSize="large" />
+    </NavLink>
+     {user && (
+            <img src={user.profilePhotoUrl} style={{width:"50px", height:"50px"}}/>
+     )}
+        
       <div>
         {profileButtons}
-        
       </div>
 
-        <NavLink to="/ShoppingCart" className="shoppingCart">
-          <ShopIcon fontSize="large" />
-        </NavLink>
-     
     </>
   );
 };
