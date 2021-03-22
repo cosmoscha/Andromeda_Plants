@@ -43,10 +43,29 @@
 .nav-group {
   grid-column: 6/7;
   grid-row: 1/2;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* position: absolute; */
+  
+}
+
+.shoppingCart {
+  grid-column: 1/2;
+}
+
+.profile-button {
+  grid-column: 2/3;
+   background: white;
+  border: 1px solid #DDD;
+  float: left;
+  display: block;
+  font-size: 14px;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+   justify-content: space-around;
+   flex-direction: column;
+   /* position: absolute; */
+   width: 150px;
+
 }
 
 .searchbar {
@@ -90,6 +109,7 @@
   border: none;
   transition: all .2s ease-in-out;
   width: 100px;
+  font-size: 17px;
 }
 
 .tagLinks button:hover {
@@ -98,22 +118,4 @@
 
 }
 
-.button-container {
-  display: flex;
-   justify-content: space-around;
-   flex-direction: column;
-   height: 150px;
-}
 
-.profile-button {
-   background: white;
-  border: 1px solid #DDD;
-  height: 50px;
-  float: left;
-  display: block;
-  font-size: 14px;
-  width: 150px;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-}

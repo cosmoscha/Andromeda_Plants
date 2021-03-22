@@ -121,20 +121,20 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
 
   return (
     <>
-        <NavLink to="/ShoppingCart">
-          <ShopIcon fontSize="large" />
-        </NavLink>
-      <div className="button-container">
+    
         <button
         className="profile-button"
           onClick={() => setShowMenu(showMenu === true ? false : true)}
           id="dropdown_button"
         >
           <AccountBoxIcon fontSize="large" />
+        {showMenu && profileButtons}
         </button>
 
-        {showMenu && profileButtons}
-      </div>
+        <NavLink to="/ShoppingCart" className="shoppingCart">
+          <ShopIcon fontSize="large" />
+        </NavLink>
+     
     </>
   );
 };
