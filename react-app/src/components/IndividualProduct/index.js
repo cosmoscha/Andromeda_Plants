@@ -8,7 +8,8 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import userProductsReducer, {
   getReviewsRatings,
 } from "../../store/userProducts";
-
+import AddIcon from '@material-ui/icons/Add';
+import RemoveIcon from '@material-ui/icons/Remove';
 const IndividualProduct = () => {
   const dispatch = useDispatch();
   const product = useParams();
@@ -62,10 +63,32 @@ const IndividualProduct = () => {
       return arr.map((entry) => {
         return (
           <>
-            <div key={entry.id}>
-              <div>{entry.reviews}</div>
+            <div key={entry.id} className="reviewEntry">
+              <div> review by: {entry.user.username}</div>
+              <div>{entry.reviews}
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
+obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
+nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
+tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
+quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos 
+sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam
+recusandae alias error harum maxime adipisci amet laborum. Perspiciatis 
+minima nesciunt dolorem! Officiis iure rerum voluptates a cumque velit 
+quibusdam sed amet tempora. Sit laborum ab, eius fugit doloribus tenetur 
+fugiat, temporibus enim commodi iusto libero magni deleniti quod quam 
+consequuntur! Commodi minima excepturi repudiandae velit hic maxime
+doloremque. Quaerat provident commodi consectetur veniam similique ad 
+earum omnis ipsum saepe, voluptas, hic voluptates pariatur est explicabo 
+fugiat, dolorum eligendi quam cupiditate excepturi mollitia maiores labore 
+suscipit quas? Nulla, placeat. Voluptatem quaerat non architecto ab laudantium
+modi minima sunt esse temporibus sint culpa, recusandae aliquam numquam 
+totam ratione voluptas quod exercitationem fuga. Possimus quis earum veniam 
+quasi aliquam eligendi, placeat qui corporis!</div>
               <div>{entry.ratings}</div>
-              <div>{entry.user.username}</div>
+              
             </div>
           </>
         );
@@ -135,7 +158,27 @@ const IndividualProduct = () => {
                 {photoArrMapper(photosArr)}
               </div>
               <div className="description">
-              <div>price for each: ${productInfo.price}</div>
+              <div className="productPrice" >price for each: ${productInfo.price}  </div>
+              {sessionStorage && (
+              <div className="addRemove">
+                  <div>available: {count}</div>
+                <div>
+                  <button onClick={quantityOutCart} className="button" style={{width: "30px", height: "30px"}}>
+                     <RemoveIcon fontSize="medium"  />
+                  </button>
+                  <div  style={{padding: "15px"}} >quantity: {test}</div>
+                  <button onClick={quantityToCart} className="button" style={{width: "30px", height: "30px"}}>
+                     <AddIcon fontSize="medium" />
+                  </button>
+                </div>
+                  <button className="button" onClick={addProduct}>
+                    add to cart
+                  </button>
+                <div>
+                  subtotal: ${subTotal}
+                </div>
+              </div>
+            )}
               <div>{productInfo.description} Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
                   molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
                   numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
@@ -161,28 +204,9 @@ const IndividualProduct = () => {
               </div>
             </div>
             <div></div>
-            {sessionStorage && (
-              <div className="addRemove">
-                  <div>available: {count}</div>
-                <div>
-                  <button onClick={quantityToCart} className="button">
-                    +
-                  </button>
-                  <div>quantity: {test}</div>
-                  <button onClick={quantityOutCart} className="button">
-                    -
-                  </button>
-                </div>
-                  <button className="button" onClick={addProduct}>
-                    add to cart
-                  </button>
-                <div>
-                  subtotal: ${subTotal}
-                </div>
-              </div>
-            )}
+            
 
-            <div className="reviews-grid">{reviewsArrMapper(reviewsArr)}</div>
+            
             <form onSubmit={submitReview} className="submitReview">
               <input
                 onChange={(e) => setReview(e.target.value)}
@@ -203,6 +227,8 @@ const IndividualProduct = () => {
                 submit review
               </button>
             </form>
+
+            <div className="reviews-grid">{reviewsArrMapper(reviewsArr)}</div>
           </div>
         </div>
       )}

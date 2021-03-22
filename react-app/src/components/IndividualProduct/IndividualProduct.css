@@ -24,11 +24,17 @@
 .reviews-grid {
 
   display: grid;
-  grid-template-columns: 110px 110px;
-  grid-template-rows: 50% 50%;
+  /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+  grid-template-rows: 1fr 1fr;
   padding-bottom: 10px;
   padding-top: 10px;
   justify-content: center;
+}
+
+.reviewEntry {
+  padding: 15px 15px;
+  border: solid;
+  border-color: black;
 }
 
 .product-information {
@@ -42,13 +48,19 @@
 .description {
   grid-column: 2/3;
   display: grid;
+  grid-template-rows: 60px 2fr 3fr;
   height: 700px;
+  width: 600px;
 }
 
 .description div {
    display: flex;
   justify-content: center;
 
+}
+
+.productPrice {
+  grid-row: 1/2;
 }
 
 /* alice carousel info  */
@@ -122,6 +134,14 @@ box-shadow: 3px 3px 5px rgba(0, 0, 0, .5)
   flex-direction: column;
   border: solid;
   border-color: black;
+  grid-row: 2/3;
+}
+
+.addRemove div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
 }
 .submitReview {
 display: flex;
