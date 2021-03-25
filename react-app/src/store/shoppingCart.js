@@ -15,21 +15,13 @@ const checked_out = (products) => {
   };
 };
 
-// const removeItem = (product) => {
-//   return {
-//     type: REMOVE,
-//     payload: product,
-//   };
-// };
 
 export const buyProducts = (getItems) => async (dispatch) => {
   dispatch(checkout(getItems));
   return getItems;
 };
 
-// export const removeProduct = (itemId) => async (dispatch) => {
-//   dispatch(removeItem(itemId));
-// };
+
 
 export const completeOrder = (address) => async (dispatch) => {
   const formData = new FormData();
@@ -60,14 +52,6 @@ const checkoutReducer = (state = initialState, action) => {
     case CHECKED_OUT:
       newState = null;
       return newState;
-    // case REMOVE:
-    //   return {
-    //     ...state,
-    //     products: [...state.splice(action.payload, 1)],
-    //   };
-
-    //   newState = state.filter((val) => val.productId !== action.payload);
-    //   return newState;
     default:
       return state;
   }

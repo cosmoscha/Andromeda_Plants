@@ -9,5 +9,6 @@ class Address(db.Model):
     userId = db.Column(db.Integer, db.ForeignKey("users.id"))
     street_address = db.Column(db.String, nullable=False)
     city = db.Column(db.String, nullable=False)
+    state = db.Column(db.String, nullable=False)
     zip_code = db.Column(db.Integer, nullable=False)
     user = db.relationship("User", back_populates="addresses")

@@ -7,6 +7,7 @@ import ProfileButton from "./ProfileButton";
 import { useDispatch, useSelector } from "react-redux";
 import { searchPlants } from "../../store/search";
 import { getProductTag } from "../../store/tags";
+import  logo from "./yuccado.jpg"
 
 const NavBar = ({ authenticated, setAuthenticated }) => {
   const history = useHistory();
@@ -14,6 +15,8 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
   const [search, setSearch] = useState("");
   const [link, setLink] = useState(false);
   const user = useSelector((state) => state.session.user);
+
+
 
   const searchThings = async (e) => {
     e.preventDefault();
@@ -32,7 +35,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
         <div className="icon-container">
           <NavLink to="/" exact={true} activeClassName="active">
             <img
-              src="https://andromedaplants.s3.amazonaws.com/plonts/yuccado.jpg"
+              src={logo}
               className="home-icon"
             />
           </NavLink>
