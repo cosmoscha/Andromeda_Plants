@@ -30,7 +30,9 @@ const Checkout = () => {
       streetAddress: streetAddress,
       city: city,
       zipCode: zipCode,
+      state: state,
     };
+    console.log("state", state)
     console.log("addddddy", address);
 
     dispatch(completeOrder(address));

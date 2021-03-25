@@ -70,5 +70,5 @@ options = [(city) for city in City.keys()]
 class AddressForm(FlaskForm):
     street_address = StringField('Street Address', verify)
     city = StringField('City', verify)
-    state = SelectField('Street Address', verify,  choices=options)
+    state = StringField('Street Address', verify)
     zip_code = StringField('Zip Code', verify)

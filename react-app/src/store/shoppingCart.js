@@ -27,6 +27,7 @@ export const completeOrder = (address) => async (dispatch) => {
   const formData = new FormData();
   formData.append("street_address", address.streetAddress);
   formData.append("city", address.city);
+  formData.append("state", address.state)
   formData.append("zip_code", address.zipCode);
   console.log("new form data", formData);
 
