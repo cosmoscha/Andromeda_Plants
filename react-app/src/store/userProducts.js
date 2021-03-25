@@ -13,6 +13,7 @@ export const getReviewsRatings = (id) => async (dispatch) => {
   return ReviewsRatings;
 };
 
+
 const initialState = [];
 
 const userProductsReducer = (state = initialState, action) => {
