@@ -143,6 +143,8 @@ console.log(purchHistory)
       alert("please login to add a review")
     }
   };
+
+  console.log("reviews arr", typeof reviewsArr)
   return (
     <>
       {userProducts && productInfo && (
@@ -207,7 +209,7 @@ console.log(purchHistory)
 
             
 
-            {!reviewsArr.length && (
+            {!reviewsArr && (
               <div style={{display: "flex", justifyContent: "center"}}>
                 <div> no reviews yet for this product</div>
                 </div>
