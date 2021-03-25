@@ -12,16 +12,17 @@ const Checkout = () => {
   const loaded = useSelector((state) => state.session.loaded);
   const [streetAddress, setStreetAddress] = useState("");
   const [city, setCity] = useState("");
+  const [state, setState] = useState("")
   const [zipCode, setZipCode] = useState("");
 
-  const [selectedPrediction, setSelectedPrediction] = useState(null)
-  const [searchValue, setSearchValue] = useState("")
-  const predictions = usePlacesAutocomplete(searchValue)
+  // const [selectedPrediction, setSelectedPrediction] = useState(null)
+  // const [searchValue, setSearchValue] = useState("")
+  // const predictions = usePlacesAutocomplete(searchValue)
 
-  const handlePredictionSelection = (e, prediction) => {
-    e.preventDefault()
-    setSelectedPrediction(prediction)
-  }
+  // const handlePredictionSelection = (e, prediction) => {
+  //   e.preventDefault()
+  //   setSelectedPrediction(prediction)
+  // }
 
   const completeOrders = (e) => {
     e.preventDefault();
@@ -34,6 +35,9 @@ const Checkout = () => {
 
     dispatch(completeOrder(address));
   };
+
+  const statesArr = ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Federated States of Micronesia','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
+
   return loaded && user ? (
     <>
       <div className="checkout-container">
@@ -49,6 +53,16 @@ const Checkout = () => {
               placeholder="city"
               value={city}
             ></input>
+            <select
+            onChange={(e) => setState(e.target.value)}
+            value={state}
+            >
+              {statesArr.map((state) => (
+                <option value={state} key={state}>
+                  {state}
+                </option>
+              ))}
+            </select>
             <input
               onChange={(e) => setZipCode(e.target.value)}
               placeholder="zip"

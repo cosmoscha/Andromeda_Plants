@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import { buyProducts } from "../../store/shoppingCart";
@@ -12,6 +12,8 @@ const ShoppingCart = () => {
   const checkout = useSelector((state) => state.checkout);
   let getItems = Object.values(sessionStorage);
   console.log("getItems initial values", getItems);
+
+
 
   getItems = getItems.map((item) => {
     return JSON.parse(item);
@@ -28,14 +30,22 @@ const ShoppingCart = () => {
 
   const checkoutMapper = () => {
     let result = getItems.map((product) => {
-      console.log("products", product);
+      console.log("products", product.quantity);
+      let subtotal=product.quantity * product.price
+
+  
       return (
         <>
           <div key={product.productId} className="checkoutItems">
             <div>{product.name}</div>
             <img src={product.photo} />
-            <div>{product.price}</div>
+            <div>price for each:{product.price}</div>
+            <div>subtotal: {subtotal}</div>
+            <div>
+        
             <div>{product.quantity}</div>
+         
+            </div>
             <button onClick={removeFromStore} value={product.productId}>
               remove from cart
             </button>
