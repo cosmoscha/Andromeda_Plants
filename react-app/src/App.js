@@ -19,7 +19,6 @@ function App() {
   const [loaded, setLoaded] = useState(true);
   const dispatch = useDispatch();
 
-  console.log("authenticated status on app", authenticated)
 
   useEffect(() => {
     (async () => {

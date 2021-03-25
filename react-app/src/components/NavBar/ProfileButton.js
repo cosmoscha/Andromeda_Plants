@@ -37,7 +37,7 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
     setSignedup(false);
   }
 
-  console.log("authenticated status on profile btton", authenticated)
+
 
 
   const onLogin = async (e) => {
