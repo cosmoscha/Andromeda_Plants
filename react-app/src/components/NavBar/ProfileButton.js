@@ -59,6 +59,7 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
       const user = await signUp(username, email, password, profilePhotoFile);
       if (!user.errors) {
         setAuthenticated(true);
+        dispatch(addUser(user));
       }
     }
   };
@@ -98,6 +99,9 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
       setSelectedFile(`${e.target.value.split("\\").pop()}`);
     }
   };
+
+
+
 
   const profileButtons = (
     <>
@@ -279,7 +283,7 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
           <ShopIcon fontSize="large" />
     </NavLink>
      {user && (
-            <img src={user.profilePhotoUrl} style={{width:"50px", height:"50px"}}/>
+            <img src={user.profilePhotoUrl} style={{width:"50px", height:"50px", borderRadius: "40%"}}/>
      )}
         
       <div>

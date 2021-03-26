@@ -37,6 +37,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
             <img
               src={logo}
               className="home-icon"
+              
             />
           </NavLink>
           <div className="banner"> Andromeda Plants</div>

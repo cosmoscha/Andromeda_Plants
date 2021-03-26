@@ -28,9 +28,18 @@ def makeReview(id):
     print("the return boy", form.data)
     print("the return boy", form.data['reviews'])
     print("the return boy", form.data['ratings'])
+    reviewData = form.data['reviews']
+    ratingData = form.data['ratings']
+
+    existing_Product = UserProduct.query.filter_by(users_id=current_user.id, products_id=id).first()
+    print("existddddddddddddddddddddddddddddddddddddddddddddddddddin product", existing_Product.reviews)
+    if existing_Product:
+        existing_Product.reviews = reviewData,
+        existing_Product.ratings = ratingData
+        db.session.add(existing_Product)
+        db.session.commit()
+
     if form.validate_on_submit():
-        reviewData = form.data['reviews']
-        ratingData = form.data['ratings']
         review = UserProduct(
             users_id=current_user.id,
             products_id=int(id),

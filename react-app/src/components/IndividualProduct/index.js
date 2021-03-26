@@ -5,11 +5,14 @@ import { useParams, Redirect, useHistory } from "react-router-dom";
 import "./IndividualProduct.css";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
+
+
 import userProductsReducer, {
   getReviewsRatings,
 } from "../../store/userProducts";
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
+import Rating from 'material-ui-rating'
 const IndividualProduct = () => {
   const dispatch = useDispatch();
   const product = useParams();
@@ -100,7 +103,6 @@ const IndividualProduct = () => {
   let test = quantity - count;
   let subTotal = productInfo.price * test;
 
-  const ratings = [1, 2, 3, 4, 5];
   const quantityToCart = () => {
     if (count === 0) {
       return;
@@ -205,6 +207,11 @@ quasi aliquam eligendi, placeat qui corporis!
             </div>
             <div style={{display: "flex", justifyContent: "center", paddingTop: "20px"}}>
             <form onSubmit={submitReview} className="submitReview">
+              <Rating
+                value={rating}
+                max={5}
+                onChange={(value) => setRating(value)}
+              />
               <input
                 onChange={(e) => setReview(e.target.value)}
                 value={review}
@@ -212,16 +219,6 @@ quasi aliquam eligendi, placeat qui corporis!
                 type="text"
                 className="reviewInput"
               ></input>
-              <select
-                onChange={(e) => setRating(e.target.value)}
-                value={rating}
-              >
-                {ratings.map((rating) => (
-                  <option value={rating} key={rating}>
-                    {rating}
-                  </option>
-                ))}
-              </select>
               <button id={review.id} type="submit" className="button">
                 submit review
               </button>
