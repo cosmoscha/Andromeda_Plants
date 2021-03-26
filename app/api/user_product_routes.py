@@ -13,10 +13,21 @@ def getAll(id):
 
 @userProduct_routes.route('/history', methods=["POST"])
 def makeHistory():
-    print("request data", type(json.loads(request.data)))
-    # history = UserProduct(
+    broughtHistory = json.loads(request.data)["userProductInfo"]["checkoutHistory"]
+    print("request data", broughtHistory)
+    for history in broughtHistory:
+        newHistory = UserProduct(
+            users_id=current_user.id, 
+            products_id=history,
+            )
+        print("newHistory", newHistory)
+        db.session.add(newHistory)
 
-    # )
+
+    db.session.commit()
+    return "submissions successful"
+
+
 
 @userProduct_routes.route('/finish', methods=["POST"])
 def getAddressForm():
