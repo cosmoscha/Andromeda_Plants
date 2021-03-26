@@ -16,8 +16,16 @@
 .product-name {
   display: flex;
   justify-content: center;
-  font-size: 30px;
+  font-size: 50px;
   padding: 5px 5px 5px 5px;
+  transition: transform 0.5s ease-in-out;
+
+}
+
+.product-name:hover {
+  color: rgb(50, 146, 50);
+  transform: scale(1.2)
+
 }
 
 .reviews-grid {
@@ -31,7 +39,11 @@
 }
 
 .reviewEntry {
-  padding: 15px 15px;
+  /* padding: 15px 15px; */
+  margin: 5px 5px;
+  min-width:50vw;
+  max-width: 69vw;
+  min-height: 150px;
   border: solid;
   border-color: black;
 }
@@ -132,8 +144,10 @@ box-shadow: 3px 3px 5px rgba(0, 0, 0, .5)
   align-items: center;
   flex-direction: column;
   border: solid;
+  border-width: 3px 0px 3px 0px;
   border-color: black;
   grid-row: 2/3;
+  height: 200px;
 }
 
 .addRemove div {
