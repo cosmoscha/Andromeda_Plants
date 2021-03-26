@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Redirect, useHistory } from "react-router-dom";
-import { completeOrder, getForm } from "../../store/shoppingCart";
+import { buyProducts, completeOrder, getForm, makeHistory } from "../../store/shoppingCart";
 import { usePlacesAutocomplete } from "./AutoCompleteHook";
 
 import "./Checkout.css";
@@ -10,10 +10,25 @@ const Checkout = () => {
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
   const loaded = useSelector((state) => state.session.loaded);
+  const checkout = useSelector((state)=> state.checkout)
   const [streetAddress, setStreetAddress] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("")
   const [zipCode, setZipCode] = useState("");
+  const [address, setAddress] = useState("")
+
+  let getItems = Object.values(sessionStorage);
+  console.log("getItems initial values", getItems);
+
+
+
+  getItems = getItems.map((item) => {
+    return JSON.parse(item);
+  });
+
+  useEffect(() => {
+    dispatch(buyProducts(getItems));
+  }, [dispatch]);
 
   // const [selectedPrediction, setSelectedPrediction] = useState(null)
   // const [searchValue, setSearchValue] = useState("")
@@ -23,6 +38,14 @@ const Checkout = () => {
   //   e.preventDefault()
   //   setSelectedPrediction(prediction)
   // }
+
+  let checkoutHistory = checkout.map((product)=> {
+    return product.productId
+  })
+
+  console.log("checkoutHistory",checkoutHistory)
+
+
 
   const completeOrders = (e) => {
     e.preventDefault();
@@ -35,7 +58,13 @@ const Checkout = () => {
     console.log("state", state)
     console.log("addddddy", address);
 
-    dispatch(completeOrder(address));
+    const userProductInfo = {
+      checkoutHistory
+
+    }
+
+    // dispatch(completeOrder(address));
+    dispatch(makeHistory(userProductInfo))
   };
 
   const statesArr = ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Federated States of Micronesia','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
@@ -43,9 +72,14 @@ const Checkout = () => {
   return loaded && user ? (
     <>
       <div className="checkout-container" style={{backgroundColor: "burlywood", minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center"}}>
-        <div >
+        <div>
+          <div  style={{display: "flex", justifyContent: "center"}}>
+          <label style={{fontSize: "300%"}}>
           Submit your Address
-          <form onSubmit={completeOrders} style={{ display: "flex", flexDirection: "column", alignItems: "center"}}>
+          </label>
+
+          </div>
+          <form onSubmit={completeOrders} style={{ display: "flex", flexDirection: "column", alignItems: "center", minHeight: "50vh", minWidth: "50vw", justifyContent: "space-around", border: "solid", borderColor: "black"}}>
             <input
               onChange={(e) => setStreetAddress(e.target.value)}
               placeholder="street"

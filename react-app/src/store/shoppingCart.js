@@ -42,6 +42,22 @@ export const completeOrder = (address) => async (dispatch) => {
   dispatch(checked_out(addressInfo));
   return addressInfo;
 };
+
+export const makeHistory = (userProductInfo) => async (dispatch) => {
+  let sentHistory = await fetch(`/api/userProducts/history`,{
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+     body: JSON.stringify({
+       userProductInfo,
+    }),
+  })
+
+  const parsedHistory = await sentHistory.json()
+  dispatch(checked_out(parsedHistory))
+  return parsedHistory
+}
 const initialState = [];
 
 const checkoutReducer = (state = initialState, action) => {

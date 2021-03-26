@@ -10,6 +10,14 @@ def getAll(id):
     userProduct = UserProduct.query.filter_by(products_id=id).all()
     return jsonify ([userproduct.to_dict_user() for userproduct in userProduct])
 
+
+@userProduct_routes.route('/history', methods=["POST"])
+def makeHistory():
+    print("request data", type(json.loads(request.data)))
+    # history = UserProduct(
+
+    # )
+
 @userProduct_routes.route('/finish', methods=["POST"])
 def getAddressForm():
     form = AddressForm()
