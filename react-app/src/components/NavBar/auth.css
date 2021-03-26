@@ -1,13 +1,12 @@
 .login-form {
-  background-color:rgb(25, 128, 25);
+  background: linear-gradient(to bottom, #1494be 0%, #c2320e 100%);
+ 
   width: 550px;
   height: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  border: solid;
-  border-radius: 20%;
 }
 
 .login-form > div {
@@ -16,16 +15,82 @@
 }
 
 .loginForm-container {
+ 
   display: flex;
   justify-content: center;
   flex-direction: row;
 }
 
 .container-background {
-  background-color: grey;
+
   /* height: 100vh; */
   border-radius: 20%;
 }
 .login-title {
   font-size: 3em;
+}
+
+.buttonContainers {
+  width: 200px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.buttonContainers2 {
+  width: 200px;
+  display: flex;
+  justify-content: space-around;
+}
+.buttonContainers button {
+  /* background-color: transparent; */
+  outline: none;
+  border:none;
+  font-size: 130%;
+}
+
+.buttonContainers2 button {
+  background-color: transparent;
+  outline: none;
+  border: solid;
+  font-size: 130%;
+  color: white;
+  padding: 10px 10px;
+}
+
+.login-inputs {
+  height:80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.login-inputs input {
+  transition: all .2s ease-in-out; 
+}
+
+.login-inputs input:focus {
+  transform: scale(1.1); 
+  background: rgb(204, 204, 188);
+  color: black;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, .5)
+
+}
+
+.signup-inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 300px;
+}
+
+.signup-inputs input {
+  font-size: 150%;
+}
+
+.signup-inputs input:focus {
+  transform: scale(1.1); 
+  background: rgb(204, 204, 188);
+  color: black;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, .5)
+
 }

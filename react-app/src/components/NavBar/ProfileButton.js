@@ -14,6 +14,8 @@ import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
 import "./NavBar.css";
 
+import loginImg from "./pingpurple.jpg"
+
 const ProfileButton = ({ authenticated, setAuthenticated }) => {
   const fileInput = useRef(null);
   const [showMenu, setShowMenu] = useState(false);
@@ -124,32 +126,39 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
                             <div>{error}</div>
                           ))}
                         </div>
+                        <img src={loginImg} style={{width:"400px", height:"300px", border: "solid", borderRadius: "40%"}}/>
                         <div className="login-title">Login to your account</div>
-                        <div>
-                          <label htmlFor="email">Email</label>
+                        <div className="login-inputs">
+                          <div>
+                          
                           <input
                             name="email"
                             type="text"
                             placeholder="Email"
                             value={email}
                             onChange={updateEmail}
+                            style={{fontSize: "150%"}}
                           />
                         </div>
                         <div>
-                          <label htmlFor="password">Password</label>
                           <input
                             name="password"
                             type="password"
                             placeholder="Password"
                             value={password}
                             onChange={updatePassword}
+                            style={{fontSize: "150%"}}
                           />
                         </div>
+                        </div>
+                        <div className="buttonContainers">
                         <button type="submit">Login</button>
                         <button type="submit" onClick={loginDemo}>
                           demo
                         </button>
-                        <button onClick={()=> setSignedup(true)}>
+                        </div>
+                        
+                        <button onClick={()=> setSignedup(true)} style={{backgroundColor: "transparent", outline:"none", border: "none", color: "white", fontSize: "120%"}}>
                           don't have an account? signup today!
                         </button>
                       </form>
@@ -169,9 +178,11 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
                 <div className="loginForm-container">
                   <form onSubmit={onSignUp} className="login-form">
                     <div className="login-title">Create an account</div>
-                    <div>
-                      <label>User Name:</label>
+                    <div className="signup-inputs">
+                      <div>
+                      
                       <input
+                      placeholder="Create a Username"
                         type="text"
                         name="username"
                         onChange={updateUsername}
@@ -179,8 +190,9 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
                       ></input>
                     </div>
                     <div>
-                      <label>Email: </label>
+                 
                       <input
+                      placeholder="Enter your Email"
                         type="text"
                         name="email"
                         onChange={updateEmail}
@@ -188,8 +200,9 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
                       ></input>
                     </div>
                     <div>
-                      <label>Password: </label>
+                    
                       <input
+                      placeholder="Create a password"
                         type="password"
                         name="password"
                         onChange={updatePassword}
@@ -197,8 +210,9 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
                       ></input>
                     </div>
                     <div>
-                      <label>Repeat Password: </label>
+                    
                       <input
+                      placeholder="Confirm your password"
                         type="password"
                         name="repeat_password"
                         onChange={updateRepeatPassword}
@@ -206,6 +220,8 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
                         required={true}
                       ></input>
                     </div>
+                    </div>
+                    
                     <div>
                       <div className="normalize-text file-input ">
                         <label
@@ -221,7 +237,7 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
                               padding: "0 8px",
                             }}
                           >
-                            <CloudUploadOutlined style={{ marginRight: "12px" }} />
+                            <CloudUploadOutlined style={{ marginRight: "12px", fontSize: "large" }} />
                             <h5
                               className="normalize-text"
                               style={{ margin: "0", overflow: "hidden" }}
@@ -240,8 +256,11 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
                         />
                       </div>
                     </div>
+                    <div className="buttonContainers2"> 
                     <button type="submit">Sign Up</button>
                     <button onClick={()=> setSignedup(false)}> back to login</button>
+
+                    </div>
                   </form>
                 </div>
               </div>
