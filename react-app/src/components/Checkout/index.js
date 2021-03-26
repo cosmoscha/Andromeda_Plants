@@ -42,9 +42,10 @@ const Checkout = () => {
 
   return loaded && user ? (
     <>
-      <div className="checkout-container">
-        <div>
-          <form onSubmit={completeOrders}>
+      <div className="checkout-container" style={{backgroundColor: "burlywood", minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center"}}>
+        <div >
+          Submit your Address
+          <form onSubmit={completeOrders} style={{ display: "flex", flexDirection: "column", alignItems: "center"}}>
             <input
               onChange={(e) => setStreetAddress(e.target.value)}
               placeholder="street"

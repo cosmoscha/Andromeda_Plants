@@ -208,9 +208,12 @@ quasi aliquam eligendi, placeat qui corporis!
             <div style={{display: "flex", justifyContent: "center", paddingTop: "20px"}}>
             <form onSubmit={submitReview} className="submitReview">
               <Rating
+              name="size-large"
+              size="large"
                 value={rating}
                 max={5}
                 onChange={(value) => setRating(value)}
+                
               />
               <input
                 onChange={(e) => setReview(e.target.value)}

@@ -28,45 +28,61 @@ const ShoppingCart = () => {
     dispatch(buyProducts(getItems));
   };
 
+
+let grandTotal = 0 ;
   const checkoutMapper = () => {
     let result = getItems.map((product) => {
       console.log("products", product.quantity);
       let subtotal=product.quantity * product.price
+      grandTotal += subtotal
+      console.log("grandTotal", grandTotal)
 
-  
+
       return (
         <>
-          <div key={product.productId} className="checkoutItems">
-            <div>{product.name}</div>
-            <img src={product.photo} />
-            <div>price for each:{product.price}</div>
-            <div>subtotal: {subtotal}</div>
+
+          <div key={product.productId} className="checkoutItems" style={{display: "flex", justifyContent:"center", flexDirection: "column", alignItems: "center", border: "solid", borderColor: "black"}}>
+            <div style={{fontSize: "175%", fontWeight:"bold"}}>{product.name}</div>
+            <img src={product.photo} style={{borderRadius: "30%"}} />
+            <div style={{fontSize: "125%"}}>price for each:{product.price}</div>
             <div>
-        
-            <div>{product.quantity}</div>
-         
+            <div style={{fontSize: "125%"}}>quantity: {product.quantity}</div>
             </div>
+            <br></br>
+            <div style={{fontSize: "125%"}}>subtotal: {subtotal}</div>
             <button onClick={removeFromStore} value={product.productId}>
               remove from cart
             </button>
+            <br></br>
+            <br></br>
+            
           </div>
         </>
       );
     });
     return result;
   };
+  
 
   const goToCheckout = () => {
     history.push("/checkout");
   };
 
+  // grandTotal = grandTotal.reduce(function(prev, curr){
+  //   return prev + curr
+  // })
+
+  console.log("ffffffeefe", grandTotal)
+
   return (
     <>
-      <div className="pages-container">
+      <div className="pages-container" style={{backgroundColor:"burlywood", minHeight: "100vh"}}>
         <div>{checkoutMapper()}</div>
-        <div> hullo world</div>
-        <div>
-          <button onClick={goToCheckout}> checkout</button>
+        <br></br>
+  
+        <div style={{display: "flex", justifyContent:"center", flexDirection: "column", alignItems: "center", fontSize: "200%"}}>
+          <div> grand total: ${grandTotal}</div>
+          <button onClick={goToCheckout} style={{fontSize: "150%", borderRadius: "10%", color: "green"}}> checkout</button>
         </div>
       </div>
     </>
