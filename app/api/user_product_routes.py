@@ -14,7 +14,6 @@ def getAll(id):
 @userProduct_routes.route('/history', methods=["POST"])
 def makeHistory():
     broughtHistory = json.loads(request.data)["userProductInfo"]["checkoutHistory"]
-    print("request data", broughtHistory)
     for history in broughtHistory:
         newHistory = UserProduct(
             users_id=current_user.id, 
@@ -35,6 +34,8 @@ def getAddressForm():
     print("form.data", form.data)
     form['csrf_token'].data = request.cookies['csrf_token']
     print(",,,,,,,,,,,,,,,,,,,,,,,,,,,", form['csrf_token'].data)
+    
+
     if form.validate_on_submit():
         streetData = form.data['street_address']
         cityData = form.data['city']
