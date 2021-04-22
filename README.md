@@ -1,6 +1,6 @@
-# Flask React Project
+# Andromeda Plants
 
-This is the backend for the Flask React project.
+Plant eCommerce Store
 
 ## Getting started
 
