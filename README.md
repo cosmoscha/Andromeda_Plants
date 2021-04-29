@@ -2,7 +2,7 @@
 
 Plant eCommerce Store
 
-## Getting started
+## Getting started 
 
 1. Clone this repository (only this branch)
 
