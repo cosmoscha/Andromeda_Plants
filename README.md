@@ -2,7 +2,7 @@
 
 Plant eCommerce Store
 
-## Getting started 
+<!-- ## Getting started 
 
 1. Clone this repository (only this branch)
 
@@ -96,4 +96,4 @@ Plant eCommerce Store
 
 10. Under Settings find "Config Vars" and add any additional/secret .env variables.
  //testingss
-11. profit
+11. profit -->
