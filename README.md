@@ -4,7 +4,7 @@ Plant eCommerce Store
 
 <!-- ## Getting started 
 
-1. Clone this repository (only this branch)
+1. Clone this repo sitory (only this branch)
 
    ```bash
    git clone https://github.com/appacademy-starters/python-project-starter.git
