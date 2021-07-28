@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import ReactDependentScript from 'react-dependent-script';
+import ReactDependentScript from "react-dependent-script";
 import { authenticate } from "./services/auth";
 import IndividualProduct from "./components/IndividualProduct";
 import { useDispatch } from "react-redux";
@@ -13,12 +13,12 @@ import ProductPage from "./components/ProductPage";
 import ShoppingCart from "./components/ShoppingCart";
 import Checkout from "./components/Checkout";
 import SearchResult from "./components/SearchResults";
+import Discussion from "./components/Discussion";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(true);
   const dispatch = useDispatch();
-
 
   useEffect(() => {
     (async () => {
@@ -37,13 +37,11 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar  
-      authenticated={authenticated}
-      setAuthenticated={setAuthenticated}
+      <NavBar
+        authenticated={authenticated}
+        setAuthenticated={setAuthenticated}
       />
       <Switch>
-        
-
         <Route path="/" exact={true}>
           <HomePage />
         </Route>
@@ -56,13 +54,18 @@ function App() {
         <Route path="/ShoppingCart" exact={true}>
           <ShoppingCart />
         </Route>
+        <Route path="/discussion" exact={true}>
+          <Discussion />
+        </Route>
         <Route path="/checkout" exact={true}>
           <ReactDependentScript
             loadingComponent={<div>jQuery is loading...</div>}
-            scripts={['https://maps.googleapis.com/maps/api/js?key=AIzaSyA5EtHdWAUSu-oZM23aOR8xp059iOvkcv8&libraries=places']}
+            scripts={[
+              "https://maps.googleapis.com/maps/api/js?key=AIzaSyA5EtHdWAUSu-oZM23aOR8xp059iOvkcv8&libraries=places",
+            ]}
           >
-          <Checkout />
-            </ReactDependentScript>
+            <Checkout />
+          </ReactDependentScript>
         </Route>
         <Route path="/search-results" exact={true}>
           <SearchResult />

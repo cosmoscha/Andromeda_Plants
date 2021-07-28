@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, Router } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
+
 const PlantMenu = ({ setAuthenticated }) => {
   const [showMenu, setShowMenu] = useState(false);
 
   let menuButtons = (
     <div className="sidebar-buttons">
       <NavLink to="/tags/1">Nepenthes</NavLink>
-
       <NavLink to="/tags/2">Cephalotus</NavLink>
       <NavLink to="/tags/3">Venus Flytraps</NavLink>
       <NavLink to="/tags/4">Butterworts</NavLink>

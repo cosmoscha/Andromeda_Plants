@@ -10,11 +10,11 @@ import { CloudUploadOutlined } from "@material-ui/icons";
 import { useSelector } from "react-redux";
 import { addUser } from "../../store/session";
 import { authenticate } from "../../services/auth";
-import { Modal } from 'react-responsive-modal';
-import 'react-responsive-modal/styles.css';
+import { Modal } from "react-responsive-modal";
+import "react-responsive-modal/styles.css";
 import "./NavBar.css";
 
-import loginImg from "./pingpurple.jpg"
+import loginImg from "./pingpurple.jpg";
 
 const ProfileButton = ({ authenticated, setAuthenticated }) => {
   const fileInput = useRef(null);
@@ -25,9 +25,9 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-   const [repeatPassword, setRepeatPassword] = useState("");
-    const [profilePhotoFile, setProfilePhotoFile] = useState("");
-    const [selectedFile, setSelectedFile] = useState("Profile Image");
+  const [repeatPassword, setRepeatPassword] = useState("");
+  const [profilePhotoFile, setProfilePhotoFile] = useState("");
+  const [selectedFile, setSelectedFile] = useState("Profile Image");
 
   const dispatch = useDispatch();
 
@@ -37,10 +37,7 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
   const onCloseModal = () => {
     setOpen(false);
     setSignedup(false);
-  }
-
-
-
+  };
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -53,7 +50,7 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
     }
   };
 
-   const onSignUp = async (e) => {
+  const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
       const user = await signUp(username, email, password, profilePhotoFile);
@@ -100,9 +97,6 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
     }
   };
 
-
-
-
   const profileButtons = (
     <>
       {authenticated && (
@@ -110,73 +104,89 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
           <div>
             <LogoutButton setAuthenticated={setAuthenticated} />
           </div>
-          <div>
-      
-          </div>
+          <div></div>
         </>
       )}
-      {!authenticated && !signedup &&(
+      {!authenticated && !signedup && (
         <>
           <div>
             <button onClick={onOpenModal}>
               <AccountBoxIcon fontSize="large" />
-              </button>
+            </button>
             <Modal open={open} onClose={onCloseModal} center className="modal">
-                <div className="container-background">
-                    <div className="loginForm-container">
-                      <form onSubmit={onLogin} className="login-form">
-                        <div>
-                          {errors.map((error) => (
-                            <div>{error}</div>
-                          ))}
-                        </div>
-                        <img src={loginImg} style={{width:"400px", height:"300px", border: "solid", borderRadius: "40%"}}/>
-                        <div className="login-title">Login to your account</div>
-                        <div className="login-inputs">
-                          <div>
-                          
-                          <input
-                            name="email"
-                            type="text"
-                            placeholder="Email"
-                            value={email}
-                            onChange={updateEmail}
-                            style={{fontSize: "150%"}}
-                          />
-                        </div>
-                        <div>
-                          <input
-                            name="password"
-                            type="password"
-                            placeholder="Password"
-                            value={password}
-                            onChange={updatePassword}
-                            style={{fontSize: "150%"}}
-                          />
-                        </div>
-                        </div>
-                        <div className="buttonContainers">
-                        <button type="submit">Login</button>
-                        <button type="submit" onClick={loginDemo}>
-                          demo
-                        </button>
-                        </div>
-                        
-                        <button onClick={()=> setSignedup(true)} style={{backgroundColor: "transparent", outline:"none", border: "none", color: "white", fontSize: "120%"}}>
-                          don't have an account? signup today!
-                        </button>
-                      </form>
+              <div className="container-background">
+                <div className="loginForm-container">
+                  <form onSubmit={onLogin} className="login-form">
+                    <div>
+                      {errors.map((error) => (
+                        <div>{error}</div>
+                      ))}
                     </div>
-                  </div>
-              </Modal>
+                    <img
+                      src={loginImg}
+                      style={{
+                        width: "400px",
+                        height: "300px",
+                        border: "solid",
+                        borderRadius: "40%",
+                      }}
+                    />
+                    <div className="login-title">Login to your account</div>
+                    <div className="login-inputs">
+                      <div>
+                        <input
+                          name="email"
+                          type="text"
+                          placeholder="Email"
+                          value={email}
+                          onChange={updateEmail}
+                          style={{ fontSize: "150%" }}
+                        />
+                      </div>
+                      <div>
+                        <input
+                          name="password"
+                          type="password"
+                          placeholder="Password"
+                          value={password}
+                          onChange={updatePassword}
+                          style={{ fontSize: "150%" }}
+                        />
+                      </div>
+                    </div>
+                    <div className="buttonContainers">
+                      <button type="submit">Login</button>
+                      <button type="submit" onClick={loginDemo}>
+                        demo
+                      </button>
+                    </div>
+
+                    <button
+                      onClick={() => setSignedup(true)}
+                      style={{
+                        backgroundColor: "transparent",
+                        outline: "none",
+                        border: "none",
+                        color: "white",
+                        fontSize: "120%",
+                      }}
+                    >
+                      don't have an account? signup today!
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </Modal>
           </div>
         </>
       )}
 
       {!authenticated && signedup && (
         <>
-        <div>
-            <button onClick={onOpenModal}><AccountBoxIcon fontSize="large" /></button>
+          <div>
+            <button onClick={onOpenModal}>
+              <AccountBoxIcon fontSize="large" />
+            </button>
             <Modal open={open} onClose={onCloseModal} center>
               <div className="container-background">
                 <div className="loginForm-container">
@@ -184,48 +194,44 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
                     <div className="login-title">Create an account</div>
                     <div className="signup-inputs">
                       <div>
-                      
-                      <input
-                      placeholder="Create a Username"
-                        type="text"
-                        name="username"
-                        onChange={updateUsername}
-                        value={username}
-                      ></input>
+                        <input
+                          placeholder="Create a Username"
+                          type="text"
+                          name="username"
+                          onChange={updateUsername}
+                          value={username}
+                        ></input>
+                      </div>
+                      <div>
+                        <input
+                          placeholder="Enter your Email"
+                          type="text"
+                          name="email"
+                          onChange={updateEmail}
+                          value={email}
+                        ></input>
+                      </div>
+                      <div>
+                        <input
+                          placeholder="Create a password"
+                          type="password"
+                          name="password"
+                          onChange={updatePassword}
+                          value={password}
+                        ></input>
+                      </div>
+                      <div>
+                        <input
+                          placeholder="Confirm your password"
+                          type="password"
+                          name="repeat_password"
+                          onChange={updateRepeatPassword}
+                          value={repeatPassword}
+                          required={true}
+                        ></input>
+                      </div>
                     </div>
-                    <div>
-                 
-                      <input
-                      placeholder="Enter your Email"
-                        type="text"
-                        name="email"
-                        onChange={updateEmail}
-                        value={email}
-                      ></input>
-                    </div>
-                    <div>
-                    
-                      <input
-                      placeholder="Create a password"
-                        type="password"
-                        name="password"
-                        onChange={updatePassword}
-                        value={password}
-                      ></input>
-                    </div>
-                    <div>
-                    
-                      <input
-                      placeholder="Confirm your password"
-                        type="password"
-                        name="repeat_password"
-                        onChange={updateRepeatPassword}
-                        value={repeatPassword}
-                        required={true}
-                      ></input>
-                    </div>
-                    </div>
-                    
+
                     <div>
                       <div className="normalize-text file-input ">
                         <label
@@ -241,7 +247,9 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
                               padding: "0 8px",
                             }}
                           >
-                            <CloudUploadOutlined style={{ marginRight: "12px", fontSize: "large" }} />
+                            <CloudUploadOutlined
+                              style={{ marginRight: "12px", fontSize: "large" }}
+                            />
                             <h5
                               className="normalize-text"
                               style={{ margin: "0", overflow: "hidden" }}
@@ -260,36 +268,39 @@ const ProfileButton = ({ authenticated, setAuthenticated }) => {
                         />
                       </div>
                     </div>
-                    <div className="buttonContainers2"> 
-                    <button type="submit">Sign Up</button>
-                    <button onClick={()=> setSignedup(false)}> back to login</button>
-
+                    <div className="buttonContainers2">
+                      <button type="submit">Sign Up</button>
+                      <button onClick={() => setSignedup(false)}>
+                        {" "}
+                        back to login
+                      </button>
                     </div>
                   </form>
                 </div>
               </div>
             </Modal>
-        </div>
-
+          </div>
         </>
-
       )}
     </>
   );
 
   return (
     <>
-    <NavLink to="/ShoppingCart" className="shoppingCart">
-          <ShopIcon fontSize="large" />
-    </NavLink>
-     {user && (
-            <img src={user.profilePhotoUrl} style={{width:"50px", height:"50px", borderRadius: "40%"}}/>
-     )}
-        
-      <div>
-        {profileButtons}
-      </div>
+      <NavLink to="/ShoppingCart" className="shoppingCart">
+        <ShopIcon fontSize="large" />
+      </NavLink>
+      <NavLink to="/Discussion">
+        <div>discussion</div>
+      </NavLink>
+      {user && (
+        <img
+          src={user.profilePhotoUrl}
+          style={{ width: "50px", height: "50px", borderRadius: "40%" }}
+        />
+      )}
 
+      <div>{profileButtons}</div>
     </>
   );
 };
